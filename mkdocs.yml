@@ -1,0 +1,77 @@
+site_name: Vindicta Platform
+site_description: The unified competitive Warhammer 40k platform
+site_author: Vindicta Platform Contributors
+site_url: https://vindicta-platform.github.io/mkdocs/
+
+repo_name: vindicta-platform/mkdocs
+repo_url: https://github.com/vindicta-platform/mkdocs
+
+theme:
+  name: material
+  palette:
+    - scheme: slate
+      primary: amber
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    - scheme: default
+      primary: amber
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+  font:
+    text: Outfit
+    code: JetBrains Mono
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Quick Start: getting-started/quickstart.md
+    - Installation: getting-started/installation.md
+    - Your First Match: getting-started/first-match.md
+  - Features:
+    - Army Management: features/army-management.md
+    - Match Tracking: features/match-tracking.md
+    - Meta Analysis: features/meta-analysis.md
+    - AI Predictions: features/ai-predictions.md
+  - Architecture:
+    - Platform Overview: architecture/overview.md
+    - Module Reference: architecture/modules.md
+    - Cost Model: architecture/cost-model.md
+  - API Reference:
+    - REST API: api/rest.md
+    - CLI: api/cli.md
+  - Contributing:
+    - Development Setup: contributing/setup.md
+    - Code Standards: contributing/standards.md
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.details
+  - attr_list
+  - md_in_html
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/vindicta-platform

@@ -36,6 +36,13 @@ Provide comprehensive, searchable, and beautifully rendered documentation for al
 - [ ] Community contribution guidelines
 - [ ] Analytics integration
 
+## v2.0.0 - External Integrations
+
+- [ ] Integration with external battle tracking systems (BCP, ITC, etc.)
+- [ ] Import/export to third-party army builders
+- [ ] Tournament organizer APIs
+- [ ] Community data sharing protocols
+
 ---
 
 ## Platform Integration
