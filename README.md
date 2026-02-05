@@ -1,4 +1,4 @@
-# Vindicta Platform Documentation
+# Platform-Docs
 
 The official public documentation site for the Vindicta Platform ecosystem.
 
@@ -33,7 +33,7 @@ This site is automatically deployed to GitHub Pages on push to `main`.
 ## Repository Structure
 
 ```
-mkdocs/
+Platform-Docs/
 ├── docs/           # Documentation source files
 │   ├── adr/        # Architecture Decision Records
 │   └── index.md    # Homepage

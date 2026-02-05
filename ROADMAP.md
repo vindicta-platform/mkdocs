@@ -10,7 +10,7 @@ Provide comprehensive, searchable, and beautifully rendered documentation for al
 
 ## v0.1.0 - Foundation (Current)
 
-- [x] Initialize MkDocs repository
+- [x] Initialize Platform-Docs repository
 - [ ] Configure Material theme with Vindicta branding
 - [ ] Migrate platform-wide public documentation from platform-core
 - [ ] Set up GitHub Pages deployment
@@ -52,8 +52,8 @@ This documentation site serves as the **public face** of the Vindicta Platform. 
 - Setup and contribution guides  
 - API documentation specific to that package
 
-The mkdocs site aggregates and presents platform-wide concerns only.
+The Platform-Docs site aggregates and presents platform-wide concerns only.
 
 ---
 
-*Last updated: 2026-02-01*
+*Last updated: 2026-02-04*
