@@ -1,38 +1,46 @@
 site_name: Vindicta Platform
 site_description: The unified competitive Warhammer 40k platform
 site_author: Vindicta Platform Contributors
-site_url: https://vindicta-platform.github.io/mkdocs/
+site_url: https://vindicta-platform.github.io/Platform-Docs/
 
-repo_name: vindicta-platform/mkdocs
-repo_url: https://github.com/vindicta-platform/mkdocs
+repo_name: vindicta-platform/Platform-Docs
+repo_url: https://github.com/vindicta-platform/Platform-Docs
 
 theme:
   name: material
+  logo: assets/vindicta-logo.svg
+  favicon: assets/favicon.ico
   palette:
     - scheme: slate
-      primary: amber
-      accent: amber
+      primary: deep purple
+      accent: purple
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
     - scheme: default
-      primary: amber
-      accent: amber
+      primary: deep purple
+      accent: purple
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
   font:
     text: Outfit
     code: JetBrains Mono
+  icon:
+    repo: fontawesome/brands/github
   features:
     - navigation.instant
     - navigation.tracking
     - navigation.tabs
     - navigation.sections
     - navigation.expand
+    - navigation.top
     - toc.integrate
     - search.suggest
     - search.highlight
+    - content.code.copy
+    - content.tabs.link
+
 
 nav:
   - Home: index.md

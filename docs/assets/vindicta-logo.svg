@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="vGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7000ff"/>
+      <stop offset="100%" stop-color="#a35dff"/>
+    </linearGradient>
+  </defs>
+  <rect width="100" height="100" rx="12" fill="#0a0b10"/>
+  <path d="M50 15 L30 85 L42 85 L50 55 L58 85 L70 85 L50 15 Z" 
+        fill="url(#vGrad)"
+        stroke="#a35dff" 
+        stroke-width="1"/>
+  <circle cx="50" cy="40" r="4" fill="#fff" opacity="0.8"/>
+</svg>
