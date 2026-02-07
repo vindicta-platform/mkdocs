@@ -34,11 +34,10 @@ workspace "Vindicta Platform" "C4 Architecture Model for the unified competitive
 
             # ═══════════════════════════════════════════
             # DOMAIN: Game Simulation
-            # Deterministic game mechanics and economy
+            # Deterministic game mechanics
             # ═══════════════════════════════════════════
             group "Game Simulation" {
                 diceEngine = container "Dice-Engine" "CSPRNG dice roller with entropy proofs and cryptographic fairness guarantees." "Python"
-                economyEngine = container "Economy-Engine" "Gas Tank, Atomic Ledger, and Usage Meter — resource consumption and cost model." "Python"
                 entropyBuffer = container "Entropy-Buffer" "Thread-safe, buffered entropy management for reliable RNG seeding." "Python"
             }
 
@@ -54,11 +53,18 @@ workspace "Vindicta Platform" "C4 Architecture Model for the unified competitive
             }
 
             # ═══════════════════════════════════════════
-            # DOMAIN: Analytics & Intelligence
-            # Prediction, meta analysis, and tactical AI
+            # DOMAIN: Analytics
+            # Meta analysis and prediction
             # ═══════════════════════════════════════════
-            group "Analytics & Intelligence" {
+            group "Analytics" {
                 metaOracle = container "Meta-Oracle" "AI debate engine for meta analysis and prediction." "Python"
+            }
+
+            # ═══════════════════════════════════════════
+            # DOMAIN: Primordia
+            # Deterministic tactical AI and evaluation
+            # ═══════════════════════════════════════════
+            group "Primordia" {
                 primordiaAI = container "Primordia-AI" "Deterministic tactical AI engine — the Stockfish of Warhammer." "Python"
                 arbiterPredictor = container "Arbiter-Predictor" "Statistical library for win probability calculations." "Python"
             }
@@ -69,6 +75,7 @@ workspace "Vindicta Platform" "C4 Architecture Model for the unified competitive
             # ═══════════════════════════════════════════
             group "Platform Services" {
                 vindictaCore = container "Vindicta-Core" "Shared primitives, configuration, and interfaces used across all modules." "Python"
+                economyEngine = container "Economy-Engine" "Gas Tank, Atomic Ledger, and Usage Meter — resource consumption and cost model." "Python"
                 quotaManager = container "Quota-Manager" "Usage tracking, quota enforcement, and consumption prediction." "Python"
                 meteredSaaSLogic = container "Metered-SaaS-Logic" "Dynamic usage metering and pricing multiplier logic." "Python"
                 auditLogPro = container "Audit-Log-Pro" "Dual-sink transactional audit logging system." "Python"
@@ -184,11 +191,10 @@ workspace "Vindicta Platform" "C4 Architecture Model for the unified competitive
         }
 
         container vindicta "GameSimulation" {
-            include vindicta.diceEngine vindicta.economyEngine vindicta.entropyBuffer
-            include vindicta.atomicLedgerPy vindicta.meteredSaaSLogic
+            include vindicta.diceEngine vindicta.entropyBuffer
             include vindicta.vindictaAPI
             autoLayout
-            description "Level 2 — Game Simulation domain: dice, economy, and entropy."
+            description "Level 2 — Game Simulation domain: dice and entropy."
         }
 
         container vindicta "GameNotation" {
@@ -198,19 +204,26 @@ workspace "Vindicta Platform" "C4 Architecture Model for the unified competitive
             description "Level 2 — Game Notation domain: WARScribe and transcript processing."
         }
 
-        container vindicta "AnalyticsIntelligence" {
-            include vindicta.metaOracle vindicta.primordiaAI vindicta.arbiterPredictor
-            include vindicta.diceEngine vindicta.warscribeCore
+        container vindicta "Analytics" {
+            include vindicta.metaOracle
+            include vindicta.warscribeCore vindicta.arbiterPredictor
             include vindicta.vindictaAPI
             autoLayout
-            description "Level 2 — Analytics & Intelligence domain: predictions, tactical AI, and meta analysis."
+            description "Level 2 — Analytics domain: meta analysis and prediction."
+        }
+
+        container vindicta "Primordia" {
+            include vindicta.primordiaAI vindicta.arbiterPredictor
+            include vindicta.diceEngine
+            autoLayout
+            description "Level 2 — Primordia domain: deterministic tactical AI and evaluation."
         }
 
         container vindicta "PlatformServices" {
-            include vindicta.vindictaCore vindicta.quotaManager vindicta.meteredSaaSLogic
+            include vindicta.vindictaCore vindicta.economyEngine vindicta.quotaManager vindicta.meteredSaaSLogic
             include vindicta.auditLogPro vindicta.atomicLedgerPy vindicta.agentAuditorSDK
             autoLayout
-            description "Level 2 — Platform Services domain: shared primitives, metering, and compliance."
+            description "Level 2 — Platform Services domain: shared primitives, usage, metering, and compliance."
         }
 
         container vindicta "DeveloperExperience" {

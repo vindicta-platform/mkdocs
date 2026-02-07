@@ -49,7 +49,6 @@ C4Container
 
         Boundary(gamesim, "Game Simulation") {
             Container(dice, "Dice-Engine", "Python", "CSPRNG dice with entropy proofs")
-            Container(economy, "Economy-Engine", "Python", "Gas Tank, Ledger, Meter")
             Container(entropy, "Entropy-Buffer", "Python", "Thread-safe RNG seeding")
         }
 
@@ -60,14 +59,18 @@ C4Container
             Container(btt, "Battle-Transcript-Toolkit", "Python", "Agent transcript tools")
         }
 
-        Boundary(analytics, "Analytics & Intelligence") {
+        Boundary(analytics, "Analytics") {
             Container(oracle, "Meta-Oracle", "Python", "AI meta analysis and prediction")
-            Container(primordia, "Primordia-AI", "Python", "Deterministic tactical AI")
+        }
+
+        Boundary(primordia, "Primordia") {
+            Container(primordiaAI, "Primordia-AI", "Python", "Deterministic tactical AI")
             Container(arbiter, "Arbiter-Predictor", "Python", "Win probability statistics")
         }
 
         Boundary(platform, "Platform Services") {
             Container(core, "Vindicta-Core", "Python", "Shared primitives and config")
+            Container(economy, "Economy-Engine", "Python", "Gas Tank, Ledger, Meter")
             Container(quota, "Quota-Manager", "Python", "Usage tracking and enforcement")
             Container(metered, "Metered-SaaS-Logic", "Python", "Dynamic pricing logic")
             Container(audit, "Audit-Log-Pro", "Python", "Dual-sink audit logging")
@@ -96,7 +99,7 @@ C4Container
     Rel(api, quota, "Enforces quotas")
     Rel(dice, entropy, "Seeds from")
     Rel(oracle, arbiter, "Uses win probability")
-    Rel(primordia, dice, "Simulates via")
+    Rel(primordiaAI, dice, "Simulates via")
     Rel(wsp, wsc, "Parses via")
 ```
 
@@ -108,12 +111,13 @@ Navigate to domain-specific architecture views:
 
 | Domain | Description | Key Repos |
 |--------|-------------|----------|
-| **[Presentation](#presentation)** | User-facing interfaces and API gateway | Portal, CLI, API, Logi-Slate-UI |
-| **[Game Simulation](#game-simulation)** | Deterministic game mechanics and economy | Dice-Engine, Economy-Engine, Entropy-Buffer |
-| **[Game Notation](#game-notation)** | Structured game transcription and parsing | WARScribe-Core, Parser, CLI, Battle-Transcript-Toolkit |
-| **[Analytics & Intelligence](#analytics--intelligence)** | Prediction, meta analysis, tactical AI | Meta-Oracle, Primordia-AI, Arbiter-Predictor |
-| **[Platform Services](#platform-services)** | Shared primitives, metering, compliance | Vindicta-Core, Quota-Manager, Metered-SaaS, Audit, Ledger |
-| **[Developer Experience](#developer-experience)** | Docs, org config, agents, tooling | Platform-Docs, .github, .specify, .agent, Agents |
+| **[Presentation](#presentation)** | User-facing interfaces and API gateway | Vindicta-Portal, Vindicta-CLI, Vindicta-API, Logi-Slate-UI |
+| **[Game Simulation](#game-simulation)** | Deterministic game mechanics | Dice-Engine, Entropy-Buffer |
+| **[Game Notation](#game-notation)** | Structured game transcription and parsing | WARScribe-Core, WARScribe-Parser, WARScribe-CLI, Battle-Transcript-Toolkit |
+| **[Analytics](#analytics)** | Meta analysis and prediction | Meta-Oracle |
+| **[Primordia](#primordia)** | Deterministic tactical AI and evaluation | Primordia-AI, Arbiter-Predictor |
+| **[Platform Services](#platform-services)** | Shared primitives, usage, metering, compliance | Vindicta-Core, Economy-Engine, Quota-Manager, Metered-SaaS-Logic, Audit-Log-Pro, Atomic-Ledger-Py, Agent-Auditor-SDK |
+| **[Developer Experience](#developer-experience)** | Docs, org config, agents, tooling | Platform-Docs, .github, .specify, .agent, Vindicta-Agents |
 
 ---
 
@@ -157,18 +161,11 @@ C4Container
 
     System_Boundary(sim, "Game Simulation") {
         Container(dice, "Dice-Engine", "Python", "CSPRNG dice roller with entropy proofs")
-        Container(economy, "Economy-Engine", "Python", "Gas Tank, Atomic Ledger, Usage Meter")
         Container(entropy, "Entropy-Buffer", "Python", "Thread-safe buffered entropy management")
     }
 
-    Container_Ext(ledger, "Atomic-Ledger-Py", "Atomic ledger pattern")
-    Container_Ext(metered, "Metered-SaaS-Logic", "Pricing multipliers")
-
     Rel(api, dice, "Requests dice rolls")
-    Rel(api, economy, "Tracks resource usage")
     Rel(dice, entropy, "Seeds RNG from")
-    Rel(economy, ledger, "Uses atomic ledger pattern")
-    Rel(economy, metered, "Applies pricing multipliers")
 ```
 
 ### Game Notation
@@ -192,27 +189,40 @@ C4Container
     Rel(btt, wsc, "Processes transcripts via")
 ```
 
-### Analytics & Intelligence
+### Analytics
 
 ```mermaid
 C4Container
-    title Analytics & Intelligence Domain
+    title Analytics Domain
 
     Container_Ext(api, "Vindicta-API", "REST gateway")
-    Container_Ext(dice, "Dice-Engine", "CSPRNG dice")
     Container_Ext(wsc, "WARScribe-Core", "WNS engine")
+    Container_Ext(arbiter, "Arbiter-Predictor", "Win probability")
 
-    System_Boundary(ai, "Analytics & Intelligence") {
+    System_Boundary(analytics, "Analytics") {
         Container(oracle, "Meta-Oracle", "Python", "AI debate engine for meta prediction")
-        Container(primordia, "Primordia-AI", "Python", "Deterministic tactical AI — the Stockfish of Warhammer")
-        Container(arbiter, "Arbiter-Predictor", "Python", "Statistical win probability calculations")
     }
 
     Rel(api, oracle, "Requests predictions")
     Rel(oracle, arbiter, "Uses win probability from")
     Rel(oracle, wsc, "Reads game notation via")
-    Rel(primordia, dice, "Simulates outcomes via")
-    Rel(primordia, arbiter, "Evaluates positions via")
+```
+
+### Primordia
+
+```mermaid
+C4Container
+    title Primordia Domain
+
+    Container_Ext(dice, "Dice-Engine", "CSPRNG dice")
+
+    System_Boundary(primordia, "Primordia") {
+        Container(primordiaAI, "Primordia-AI", "Python", "Deterministic tactical AI — the Stockfish of Warhammer")
+        Container(arbiter, "Arbiter-Predictor", "Python", "Statistical win probability calculations")
+    }
+
+    Rel(primordiaAI, dice, "Simulates outcomes via")
+    Rel(primordiaAI, arbiter, "Evaluates positions via")
 ```
 
 ### Platform Services
@@ -223,6 +233,7 @@ C4Container
 
     System_Boundary(svc, "Platform Services") {
         Container(core, "Vindicta-Core", "Python", "Shared primitives, config, interfaces")
+        Container(economy, "Economy-Engine", "Python", "Gas Tank, Atomic Ledger, Usage Meter")
         Container(quota, "Quota-Manager", "Python", "Usage tracking and enforcement")
         Container(metered, "Metered-SaaS-Logic", "Python", "Dynamic pricing multipliers")
         Container(audit, "Audit-Log-Pro", "Python", "Dual-sink transactional audit logging")
@@ -230,6 +241,8 @@ C4Container
         Container(auditor, "Agent-Auditor-SDK", "Python", "Mechanical Auditor compliance framework")
     }
 
+    Rel(economy, ledger, "Uses atomic ledger pattern")
+    Rel(economy, metered, "Applies pricing multipliers")
     Rel(quota, metered, "Uses metering logic from")
     Rel(auditor, audit, "Writes audit trails to")
 ```
