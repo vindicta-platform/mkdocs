@@ -25,6 +25,10 @@
          <lastmod>2026-02-08</lastmod>
     </url>
     <url>
+         <loc>https://vindicta-platform.github.io/Platform-Docs/adr/adr-001-c4-architecture-model/</loc>
+         <lastmod>2026-02-08</lastmod>
+    </url>
+    <url>
          <loc>https://vindicta-platform.github.io/Platform-Docs/api/cli/</loc>
          <lastmod>2026-02-08</lastmod>
     </url>
@@ -33,7 +37,15 @@
          <lastmod>2026-02-08</lastmod>
     </url>
     <url>
+         <loc>https://vindicta-platform.github.io/Platform-Docs/architecture/</loc>
+         <lastmod>2026-02-08</lastmod>
+    </url>
+    <url>
          <loc>https://vindicta-platform.github.io/Platform-Docs/architecture/cost-model/</loc>
+         <lastmod>2026-02-08</lastmod>
+    </url>
+    <url>
+         <loc>https://vindicta-platform.github.io/Platform-Docs/architecture/evolution/</loc>
          <lastmod>2026-02-08</lastmod>
     </url>
     <url>
