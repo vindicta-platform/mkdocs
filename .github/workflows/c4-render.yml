@@ -46,7 +46,7 @@ jobs:
       - name: Install Structurizr CLI
         run: |
           curl -L -o structurizr-cli.zip \
-            https://github.com/structurizr/cli/releases/download/v2024.09.03/structurizr-cli.zip
+https://github.com/structurizr/cli/releases/download/v2025.11.09/structurizr-cli.zip
           unzip structurizr-cli.zip -d structurizr-cli
           chmod +x structurizr-cli/structurizr.sh
           echo "$PWD/structurizr-cli" >> $GITHUB_PATH
