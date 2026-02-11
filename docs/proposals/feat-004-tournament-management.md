@@ -28,6 +28,7 @@ Competitive play is a core driver of the Warhammer community. This proposal intr
 ```
 
 **Components**:
+
 - **Bracket Engine**: Pure function library (in `Vindicta-Core`) implementing Swiss and single/double elimination pairing algorithms.
 - **TMS API**: RESTful CRUD for tournaments, rounds, matches, and standings.
 - **Portal UI**: Tournament dashboard, bracket visualizer, and score entry forms.
@@ -75,6 +76,7 @@ Competitive play is a core driver of the Warhammer community. This proposal intr
 ### User Stories
 
 #### US-008: Create Tournament
+>
 > As a **club admin**, I want to **create a tournament** so that **I can organize competitive events for my local group**.
 
 ```gherkin
@@ -93,6 +95,7 @@ Feature: Tournament Creation
 ```
 
 #### US-009: Register for Tournament
+>
 > As a **player**, I want to **register for a tournament** so that **I can compete against other players**.
 
 ```gherkin
@@ -113,6 +116,7 @@ Feature: Tournament Registration
 ```
 
 #### US-010: Generate Pairings
+>
 > As a **tournament organizer**, I want to **auto-generate round pairings** so that **matches are fair and efficient**.
 
 ```gherkin

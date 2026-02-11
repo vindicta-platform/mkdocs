@@ -28,6 +28,7 @@ Simulation results are currently ephemeral — once a simulation completes, the 
 ```
 
 **Components**:
+
 - **Replay Recorder**: Middleware in Dice-Engine that intercepts all events and serializes them to a replay file.
 - **Replay Storage**: GCS bucket with compressed JSON replay files (gzipped, ~50KB per 2000pt game).
 - **Replay Player**: Portal component with play/pause/scrub controls and animated unit state rendering.
@@ -87,6 +88,7 @@ Simulation results are currently ephemeral — once a simulation completes, the 
 ### User Stories
 
 #### US-018: Record Simulation as Replay
+>
 > As a **player**, I want **my simulations to be automatically recorded** so that **I can review them later**.
 
 ```gherkin
@@ -106,6 +108,7 @@ Feature: Replay Recording
 ```
 
 #### US-019: Play Back a Replay
+>
 > As a **player**, I want to **watch a replay of my simulation** so that **I can analyze key decision points**.
 
 ```gherkin

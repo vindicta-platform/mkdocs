@@ -14,8 +14,8 @@ Set up your development environment.
 ## Clone the Platform
 
 ```bash
-git clone https://github.com/vindicta-platform/platform-core.git
-cd platform-core
+git clone https://github.com/vindicta-platform/vindicta-platform.git
+cd vindicta-platform
 ```
 
 ## Install Dependencies

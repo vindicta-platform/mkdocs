@@ -28,6 +28,7 @@ The platform has **no gamification layer** to reward engagement. This proposal i
 ```
 
 **Components**:
+
 - **Achievement Engine**: Event-driven service that listens for domain events and evaluates achievement conditions.
 - **XP Calculator**: Module in Economy-Engine that converts actions to XP and manages level thresholds.
 - **Profile UI**: Achievement showcase on user profiles with badge gallery and progress bars.
@@ -91,6 +92,7 @@ The platform has **no gamification layer** to reward engagement. This proposal i
 ### User Stories
 
 #### US-028: Unlock an Achievement
+>
 > As a **player**, I want to **earn achievements for my actions** so that **I feel rewarded for engaging with the platform**.
 
 ```gherkin
@@ -118,6 +120,7 @@ Feature: Achievement System
 ```
 
 #### US-029: View Achievement Showcase
+>
 > As a **player**, I want to **view my achievements on my profile** so that **I can show off my progress to friends**.
 
 ```gherkin

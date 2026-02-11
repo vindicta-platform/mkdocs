@@ -72,6 +72,7 @@ The Vindicta Platform has **no community or social layer**. Players cannot conne
 ### User Stories
 
 #### US-015: Send Friend Request
+>
 > As a **player**, I want to **send a friend request** so that **I can connect with opponents I've enjoyed playing against**.
 
 ```gherkin
@@ -98,6 +99,7 @@ Feature: Friends System
 ```
 
 #### US-016: Create and Manage a Club
+>
 > As a **club organizer**, I want to **create a club** so that **my local gaming group has a shared space on the platform**.
 
 ```gherkin
@@ -124,6 +126,7 @@ Feature: Club Management
 ```
 
 #### US-017: Club Chat
+>
 > As a **club member**, I want to **chat with other club members** so that **we can coordinate games and discuss tactics**.
 
 ```gherkin

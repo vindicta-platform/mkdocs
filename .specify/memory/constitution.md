@@ -27,6 +27,7 @@ Follow-up TODOs: None
 ### I. Doc Integrity (NON-NEGOTIABLE)
 
 All documentation MUST pass automated quality validation before merge:
+
 - Markdown link validation MUST succeed (no broken internal or external links).
 - Markdown linting (markdownlint) MUST pass on all files under `docs/`.
 - Every ADR, SPIKE, and specification MUST use relative links to reference
@@ -38,6 +39,7 @@ All documentation MUST pass automated quality validation before merge:
 
 Every feature or structural change to Platform-Docs MUST follow the SDD
 lifecycle:
+
 1. **Specify**: Create a feature specification in `specs/[NNN]-[name]/spec.md`
    using the spec template.
 2. **Plan**: Produce an implementation plan with research and design artifacts.
@@ -51,6 +53,7 @@ SDD but MUST still pass CI quality gates.
 
 The C4 architecture model (`c4/workspace.dsl`) is the single source of truth
 for the Vindicta Platform's structural design:
+
 - Container names, domain groups, and relationships in documentation MUST
   match the DSL definitions.
 - ADRs and SPIKEs MUST reference container IDs (camelCase identifiers from
@@ -62,6 +65,7 @@ for the Vindicta Platform's structural design:
 
 All tooling and infrastructure choices for Platform-Docs MUST comply with
 GCP/GitHub free-tier limits:
+
 - MkDocs MUST be built and served via GitHub Pages (free).
 - CI workflows MUST use GitHub Actions with public-repo free minutes.
 - Diagram rendering MUST use open-source tools (Structurizr CLI) — no paid
@@ -72,6 +76,7 @@ GCP/GitHub free-tier limits:
 
 Documentation stability and technical debt resolution take precedence over
 new content:
+
 - Broken links, stale references, and formatting violations MUST be fixed
   before new features are merged.
 - The repository MUST maintain a zero-issue state — all open issues are

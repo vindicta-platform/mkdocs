@@ -36,6 +36,7 @@ The platform is entirely **English-only**. Warhammer is a global hobby with stro
 ```
 
 **Components**:
+
 - **i18next Core**: Translation engine with namespace support and interpolation.
 - **Locale Detector**: Browser language → URL param → cookie → fallback to `en`.
 - **Lazy Loading**: Translation JSON files loaded on demand per namespace.
@@ -101,6 +102,7 @@ The platform is entirely **English-only**. Warhammer is a global hobby with stro
 ### User Stories
 
 #### US-024: Switch Language
+>
 > As a **German-speaking player**, I want to **switch the interface to German** so that **I can navigate the platform in my native language**.
 
 ```gherkin

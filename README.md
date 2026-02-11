@@ -10,4 +10,5 @@
 | `docs/`         | `vindicta-foundation/docs/` |
 
 ## Status
+
 - **Read-only**: No new development will occur here.

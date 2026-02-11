@@ -29,6 +29,7 @@ The Vindicta API currently has **no caching layer** — every request hits the d
 ```
 
 **Components**:
+
 - **Redis (GCP Memorystore)**: In-memory cache for hot data (leaderboards, active tournament standings, session data).
 - **Cache Middleware**: Express.js middleware that checks Redis before hitting Firestore.
 - **Cache Invalidation**: Event-driven invalidation via Pub/Sub when source data changes.
@@ -43,6 +44,7 @@ vindicta:{entity}:{id}:{version}
 ```
 
 Examples:
+
 - `vindicta:army:army-456:v3`
 - `vindicta:tournament:GT-2026:standings`
 - `vindicta:meta:faction-winrates:2026-02`
@@ -89,6 +91,7 @@ interface CacheConfig {
 ### User Stories
 
 #### US-022: Fast API Responses via Caching
+>
 > As a **player**, I want **API responses to load quickly** so that **the app feels responsive**.
 
 ```gherkin
@@ -115,6 +118,7 @@ Feature: API Response Caching
 ```
 
 #### US-023: CDN for Static Assets
+>
 > As a **system operator**, I want **static assets served via CDN** so that **global users experience low latency**.
 
 ```gherkin

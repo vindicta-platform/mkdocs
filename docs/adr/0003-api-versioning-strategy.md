@@ -11,6 +11,7 @@ Proposed
 The Vindicta Platform API (Vindicta-API) is being designed to serve multiple frontend clients (Vindicta-Portal, Logi-Slate-UI) and external integrations. The API will evolve over time as new features are added and requirements change.
 
 **Question**: How should we version the API to ensure:
+
 - Backward compatibility for existing clients
 - Clear deprecation policies
 - Minimum disruption to users
@@ -83,6 +84,7 @@ Feb 2027:  v2 becomes free tier
 **Approach**: Use `Accept: application/vnd.vindicta.v1+json` header
 
 **Rejected because**:
+
 - Harder to test (browsers don't show headers by default)
 - More complex routing in FastAPI
 - Users forget to set headers
@@ -92,6 +94,7 @@ Feb 2027:  v2 becomes free tier
 **Approach**: `/api/army?version=1`
 
 **Rejected because**:
+
 - Non-standard in REST APIs
 - Easy to forget query params
 - Caching becomes complex
@@ -101,6 +104,7 @@ Feb 2027:  v2 becomes free tier
 **Approach**: Single `/api/` prefix, breaking changes force all clients to upgrade
 
 **Rejected because**:
+
 - Violates Platform Constitution (no unauthorized disruption)
 - Free tier users can't be forced to upgrade
 - Doesn't support gradual migration

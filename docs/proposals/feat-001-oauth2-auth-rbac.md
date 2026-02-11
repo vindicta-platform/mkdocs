@@ -28,6 +28,7 @@ The Vindicta Platform currently has **no authentication or authorization layer**
 ```
 
 **Integration Points**:
+
 - `Vindicta-API`: New `/auth/*` route group; JWT validation middleware on all protected endpoints.
 - `Vindicta-Core`: User entity added to the domain model; session management service.
 - `Vindicta-Portal`: Login/Register UI components; token storage via `httpOnly` cookies.
@@ -84,6 +85,7 @@ The Vindicta Platform currently has **no authentication or authorization layer**
 ### User Stories
 
 #### US-001: User Registration
+>
 > As a **new visitor**, I want to **create an account** so that **I can save my army lists and simulation results**.
 
 ```gherkin
@@ -111,6 +113,7 @@ Feature: User Registration
 ```
 
 #### US-002: User Login
+>
 > As a **registered user**, I want to **log in** so that **I can access my personalized dashboard**.
 
 ```gherkin
@@ -135,6 +138,7 @@ Feature: User Login
 ```
 
 #### US-003: Role-Based Access
+>
 > As a **platform admin**, I want to **assign roles to users** so that **I can control access to sensitive operations**.
 
 ```gherkin

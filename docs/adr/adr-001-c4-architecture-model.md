@@ -13,6 +13,7 @@ Accepted
 The Vindicta Platform has an exploding architectural footprint across 26+ repositories spanning multiple functional domains. There is no single view or entrypoint for an administrator to understand the full system topology, dependencies, and evolution state.
 
 Alternatives considered:
+
 - **Pure Mermaid diagrams** — Simple, no tooling. But lacks single-model/many-views semantics; each diagram is a disconnected artifact that drifts independently.
 - **Structurizr (hosted SaaS)** — Full-featured but introduces external dependency and cost.
 - **Doc sites (MkDocs-only)** — Already in use for Platform-Docs, but prose-based architecture docs don't provide the structured, queryable model needed.

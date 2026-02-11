@@ -12,6 +12,7 @@
 ### 1. Overview
 
 The platform currently has **no event notification system**. Users must manually poll for updates. This proposal introduces:
+
 1. **Push Notifications**: Firebase Cloud Messaging (FCM) for browser/mobile push.
 2. **Webhooks**: HTTP POST callbacks for third-party integrations (Discord bots, stat trackers, etc.).
 
@@ -30,6 +31,7 @@ The platform currently has **no event notification system**. Users must manually
 ```
 
 **Flow**:
+
 1. Domain services emit events to Redis Pub/Sub (e.g., `tournament.round_generated`, `simulation.completed`).
 2. The Dispatcher Service consumes events and routes them to registered notification channels.
 3. FCM handles browser push; Webhook Delivery handles HTTP POST to registered URLs.
@@ -87,6 +89,7 @@ The platform currently has **no event notification system**. Users must manually
 ### User Stories
 
 #### US-011: Receive Push Notification
+>
 > As a **player**, I want to **receive browser push notifications** so that **I know when my simulation is complete without keeping the tab open**.
 
 ```gherkin
@@ -107,6 +110,7 @@ Feature: Push Notifications
 ```
 
 #### US-012: Register Webhook
+>
 > As a **developer**, I want to **register a webhook URL** so that **my Discord bot can post tournament updates automatically**.
 
 ```gherkin

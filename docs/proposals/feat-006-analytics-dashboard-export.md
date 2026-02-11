@@ -29,6 +29,7 @@ Meta-Oracle generates powerful analytical data about faction performance, meta s
 ```
 
 **Components**:
+
 - **Analytics API**: Aggregation endpoints wrapping Meta-Oracle queries with date ranges, filters, and grouping.
 - **Dashboard UI**: Interactive charts (Chart.js/D3.js) for win rates, faction popularity, meta trends.
 - **Export Service**: Server-side rendering for PDF (via Puppeteer), CSV (streaming), and raw JSON.
@@ -85,6 +86,7 @@ Meta-Oracle generates powerful analytical data about faction performance, meta s
 ### User Stories
 
 #### US-013: View Analytics Dashboard
+>
 > As a **player**, I want to **view faction win rates on a dashboard** so that **I can understand the current competitive meta**.
 
 ```gherkin
@@ -105,6 +107,7 @@ Feature: Analytics Dashboard
 ```
 
 #### US-014: Export Analytics Data
+>
 > As a **content creator**, I want to **export meta data as CSV** so that **I can create custom visualizations for my YouTube channel**.
 
 ```gherkin

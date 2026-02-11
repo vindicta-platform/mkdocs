@@ -37,6 +37,15 @@ uv venv
 uv pip install -e ".[dev]"
 ```
 
+### Vindicta-Portal
+
+The unified web interface for the platform.
+
+```bash
+git clone https://github.com/vindicta-platform/Vindicta-Portal.git
+cd Vindicta-Portal
+```
+
 ### Individual Modules
 
 Each module can be installed independently:
@@ -52,11 +61,6 @@ uv pip install git+https://github.com/vindicta-platform/vindicta-economy.git
 uv pip install git+https://github.com/vindicta-platform/vindicta-oracle.git
 ```
 
-### Logi-Slate UI
-
-```bash
-git clone https://github.com/vindicta-platform/Logi-Slate-UI.git
-cd Logi-Slate-UI
 npm install
 npm run dev
 ```

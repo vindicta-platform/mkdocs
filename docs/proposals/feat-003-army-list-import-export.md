@@ -110,6 +110,7 @@ class Unit:
 ### User Stories
 
 #### US-006: Import BattleScribe Army List
+>
 > As a **player**, I want to **import my BattleScribe army list** so that **I can run simulations without re-entering my roster manually**.
 
 ```gherkin
@@ -136,6 +137,7 @@ Feature: Army List Import
 ```
 
 #### US-007: Export Army List
+>
 > As a **player**, I want to **export my army list to BattleScribe format** so that **I can share it with friends who use that app**.
 
 ```gherkin

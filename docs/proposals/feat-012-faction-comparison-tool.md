@@ -23,6 +23,7 @@ Players frequently want to compare factions head-to-head before committing to an
 ```
 
 **Components**:
+
 - **Comparison API**: Endpoint that accepts 2–4 faction IDs and returns a structured comparison object.
 - **Comparison View**: Split-panel UI with radar charts, bar charts, and matchup tables.
 - **Shareable Links**: URL encodes selected factions for sharable comparisons.
@@ -81,6 +82,7 @@ Players frequently want to compare factions head-to-head before committing to an
 ### User Stories
 
 #### US-025: Compare Two Factions
+>
 > As a **player**, I want to **compare Space Marines vs. Aeldari** so that **I can decide which faction to collect next**.
 
 ```gherkin

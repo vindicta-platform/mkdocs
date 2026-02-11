@@ -6,56 +6,83 @@ Vindicta's modular architecture explained.
 
 ## Design Philosophy
 
-Vindicta follows a **modular monolith** approach:
+Vindicta follows a **modular meso-repository** approach:
 
-- Each component is a standalone, independently deployable module
-- Components communicate through well-defined interfaces
-- The platform-core integrates all modules for unified deployment
+- **Meso-Repositories** group logically related components (e.g., `warscribe-system` contains Core, CLI, and Parser).
+- **Project Primordia** serves as the central evaluation and simulation engine.
+- Components communicate through well-defined interfaces and shared foundational models.
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                     Vindicta Platform                       │
-├─────────────────────────────────────────────────────────────┤
-│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐    │
-│  │ Logi-    │  │ Vindicta │  │ Vindicta │  │ Vindicta │    │
-│  │ Slate UI │  │ CLI      │  │ API      │  │ Core     │    │
-│  └────┬─────┘  └────┬─────┘  └────┬─────┘  └────┬─────┘    │
-│       │             │             │             │          │
-│  ─────┴─────────────┴─────────────┴─────────────┴──────    │
-│                                                             │
-│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐    │
-│  │ Dice     │  │ Economy  │  │ Meta-    │  │ WARScribe│    │
-│  │ Engine   │  │ Engine   │  │ Oracle   │  │ Core     │    │
-│  └──────────┘  └──────────┘  └──────────┘  └──────────┘    │
-└─────────────────────────────────────────────────────────────┘
+```mermaid
+graph TD
+    User[User / Player] --> Portal[Vindicta Portal]
+    User --> CLI[Vindicta CLI]
+
+    subgraph "Interface Layer"
+        Portal
+        CLI
+        API[Vindicta API]
+    end
+
+    subgraph "Core Domain Services"
+        Orchestrator[Orchestrator / Agents]
+        Oracle[Meta-Oracle]
+        Economy[Economy Engine]
+    end
+
+    subgraph "Evaluation & Physics"
+        Primordia[Project Primordia]
+        Dice[Dice Engine]
+    end
+
+    subgraph "Standardization"
+        WARScribe[WARScribe System]
+        Foundation[Vindicta Foundation]
+    end
+
+    Portal --> API
+    CLI --> API
+    API --> Orchestrator
+    Orchestrator --> Primordia
+    Orchestrator --> Oracle
+    Orchestrator --> Economy
+
+    Primordia --> Dice
+    Primordia --> WARScribe
+
+    WARScribe -.-> Foundation
+    Oracle -.-> Foundation
+    Economy -.-> Foundation
 ```
 
 ## Core Modules
 
-| Module                  | Purpose                                     |
-| ----------------------- | ------------------------------------------- |
-| **Vindicta Foundation** | Base models, Architecture, Constitution     |
-| **Vindicta Engine**     | Physics, Dice, Entropy, Evaluation, AI Core |
-| **Warscribe System**    | Notation, Parsing, Transcripts              |
-| **Vindicta Economy**    | Ledger, GasTank, Transactions, Achievements |
-| **Vindicta Oracle**     | Debate Council, Prediction, Agent Protocol  |
-| **Vindicta Platform**   | API, Portal, UI Lib                         |
-| **Vindicta Agents**     | SDKs, Workflows, Swarm                      |
+| Module                  | Repository                         | Purpose                                                        |
+| :---------------------- | :--------------------------------- | :------------------------------------------------------------- |
+| **Vindicta Foundation** | `vindicta-foundation`              | Base models, Architecture, Constitution, Axioms.               |
+| **Project Primordia**   | `Primordia-AI` / `vindicta-engine` | The core evaluation engine for combat simulation and analysis. |
+| **WARScribe System**    | `warscribe-system`                 | Universal Wargaming Notation System, Parser, and CLI tools.    |
+| **Vindicta Economy**    | `vindicta-economy`                 | Ledger, GasTank, Transactions, and Achievements.               |
+| **Meta-Oracle**         | `vindicta-oracle`                  | Debate Council, Prediction markets, and Agent Protocol.        |
+| **Vindicta Portal**     | `Vindicta-Portal`                  | The unified web interface for the platform.                    |
+| **Vindicta Agents**     | `Vindicta-Agents`                  | Agentic workflows and swarm intelligence.                      |
 
 ## Data Flow
 
 ```
-User → UI/CLI → API → [ Service Modules ] → Database
-                           │
-                    ┌──────┴──────┐
-                    ↓             ↓
-              Dice Engine   Meta-Oracle
+User → [Portal/CLI] → API → Orchestrator
+                                  │
+                  ┌───────────────┼───────────────┐
+                  ↓               ↓               ↓
+            Project Primordia   Economy      Meta-Oracle
+                  │
+                  ↓
+           WARScribe Notation
 ```
 
 ---
 
 ## Deployment Options
 
-1. **Full Platform** — All modules integrated
-2. **Individual Modules** — Use specific components
-3. **Self-Hosted** — Run on your infrastructure
+1. **Full Platform** — All modules integrated via Docker/Orchestrator.
+2. **Individual Modules** — Use specific python packages (e.g., `pip install vindicta-warscribe`).
+3. **Self-Hosted** — Run the entire stack on your infrastructure using the provided `docker-compose` setups.

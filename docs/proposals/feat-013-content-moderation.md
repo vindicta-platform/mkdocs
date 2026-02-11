@@ -29,6 +29,7 @@ With social features (feat-007) and community content, the platform needs **auto
 ```
 
 **Pipeline Stages**:
+
 1. **Ingestion**: All user-generated content (chat messages, club descriptions, army list names) enters the pipeline.
 2. **Automated Scan**: Moderation Agent (built on Agent-Auditor-SDK) uses Google Cloud NLP for toxicity detection.
 3. **Threshold Routing**: Score ≥ 0.9 → auto-block; 0.5–0.9 → manual review queue; < 0.5 → approved.
@@ -84,6 +85,7 @@ With social features (feat-007) and community content, the platform needs **auto
 ### User Stories
 
 #### US-026: Auto-Block Toxic Content
+>
 > As a **platform operator**, I want **toxic messages to be automatically blocked** so that **the community remains safe without requiring constant manual monitoring**.
 
 ```gherkin
@@ -112,6 +114,7 @@ Feature: Automated Content Moderation
 ```
 
 #### US-027: Manual Review Workflow
+>
 > As a **platform admin**, I want to **review flagged content** so that **I can make nuanced moderation decisions**.
 
 ```gherkin

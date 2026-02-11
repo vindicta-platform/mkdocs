@@ -7,54 +7,50 @@ Get Vindicta running in 5 minutes.
 ## Prerequisites
 
 - Python 3.10+
-- [uv](https://github.com/astral-sh/uv) (recommended) or pip
+- [uv](https://github.com/astral-sh/uv) (recommended)
+- Docker & Docker Compose (for full platform)
 - A terminal
 
-## Option 1: CLI (Recommended)
+## Option 1: Unified CLI
 
-The fastest way to start is with the unified CLI:
+The `Vindicta-CLI` provides a unified entry point for all platform tools.
 
 ```bash
-# Install the CLI
-uv pip install git+https://github.com/vindicta-platform/Vindicta-CLI.git
+# Clone the CLI repository
+git clone https://github.com/vindicta-platform/Vindicta-CLI.git
+cd Vindicta-CLI
 
-# Check installation
+# Install with uv
+uv sync
+source .venv/bin/activate
+
+# Verify installation
 vindicta --version
-
-# Roll some dice
-vindicta dice roll 2d6
-
-# Validate an army list
-vindicta warscribe validate mylist.json
 ```
 
-## Option 2: Local API Server
+## Option 2: Full Platform (Docker)
 
-Run the full platform locally:
+Run the entire suite (Portal, Engine, Oracle) locally using Docker.
 
 ```bash
-# Clone the platform core
-git clone https://github.com/vindicta-platform/platform-core.git
-cd platform-core
+# Clone the Orchestrator / Platform Root
+git clone https://github.com/vindicta-platform/vindicta-platform.git
+cd vindicta-platform
 
-# Install dependencies
-uv venv
-uv pip install -e ".[dev]"
+# Start all services
+docker-compose up -d
 
-# Start the server
-uvicorn vindicta.api:app --reload
-
-# API is now at http://localhost:8000
-# Docs at http://localhost:8000/docs
+# Access the Portal
+# Open http://localhost:3000
 ```
 
-## Option 3: UI Only
+## Option 3: Interface Only (Portal)
 
-For the visual experience:
+If you only want to work on the frontend:
 
 ```bash
-git clone https://github.com/vindicta-platform/Logi-Slate-UI.git
-cd Logi-Slate-UI
+git clone https://github.com/vindicta-platform/Vindicta-Portal.git
+cd Vindicta-Portal
 npm install
 npm run dev
 
@@ -65,6 +61,6 @@ npm run dev
 
 ## Next Steps
 
-- [Installation Guide](installation.md) — Detailed setup instructions
-- [Your First Match](first-match.md) — Record a game step by step
-- [Army Management](../features/army-management.md) — Build and validate lists
+- [Installation Guide](installation.md) — Detailed setup instructions for each meso-repository.
+- [WARScribe System](../features/army-management.md) — Learn the notation format.
+- [Architecture](../architecture/overview.md) — Understand how the modules connect.

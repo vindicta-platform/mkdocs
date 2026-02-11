@@ -18,12 +18,15 @@ Vindicta is a comprehensive platform for competitive Warhammer 40k players, tour
 Vindicta is built on three core principles:
 
 ### 🎯 Mechanical Fidelity
+
 Every rule is implemented exactly as written. No shortcuts, no approximations. When the platform says a unit has a certain ability, it works exactly like it does on the tabletop.
 
 ### 💰 Free Tier First
+
 The entire platform runs on GCP Free Tier. No credit card required. No monthly fees. If you're playing competitively, you shouldn't have to pay for basic tools.
 
 ### 🔓 Open Architecture
+
 All components are open source and modular. Use the whole platform, or just the pieces you need. Host it yourself, or use our hosted version.
 
 ---

@@ -26,6 +26,7 @@ The Vindicta Portal is a static HTML site with **no mobile optimization** and **
 ```
 
 **Components**:
+
 - **Service Worker**: Caches static assets (HTML, CSS, JS, images) for offline access; implements stale-while-revalidate strategy for API data.
 - **Web App Manifest**: `manifest.json` with app name, icons, theme color, and display mode.
 - **Responsive Layout**: Mobile-first CSS grid with breakpoints for tablet and desktop.
@@ -89,6 +90,7 @@ The Vindicta Portal is a static HTML site with **no mobile optimization** and **
 ### User Stories
 
 #### US-020: Install PWA
+>
 > As a **mobile user**, I want to **install Vindicta to my home screen** so that **it feels like a native app**.
 
 ```gherkin
@@ -109,6 +111,7 @@ Feature: PWA Installation
 ```
 
 #### US-021: Offline Access
+>
 > As a **player on a train**, I want to **view my saved army lists offline** so that **I can review my roster without internet**.
 
 ```gherkin

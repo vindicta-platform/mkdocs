@@ -2,103 +2,61 @@
 
 API reference for the Vindicta Platform.
 
+> [!WARNING]
+> **Provisional API**: The REST API is currently undergoing strict revision as part of the **Project Primordia** integration. The endpoints below are provisional. For stable interaction, use the [Vindicta-CLI](../getting-started/quickstart.md) or the Python SDKs directly.
+
 ---
 
 ## Base URL
 
 ```
-https://api.vindicta.dev/v1  (hosted)
-http://localhost:8000/v1     (local)
+https://api.vindicta.dev/v1  (Provisional Hosted)
+http://localhost:8000/v1     (Local Orchestrator)
 ```
 
-## Authentication
+## Core Endpoints
 
-Currently open. Authentication coming in v1.1.
-
-## Endpoints
-
-### Health
+### Evaluation (Project Primordia)
 
 ```http
-GET /health
+POST /engine/evaluate
 ```
 
-Returns platform health status.
-
----
-
-### Dice
-
-#### Roll Dice
-
-```http
-POST /dice/roll
-```
+Submit a WARScribe transcript for analysis.
 
 ```json
 {
-  "notation": "2d6+3",
-  "count": 1
+  "transcript": "...",
+  "config": {
+    "edition": "10th",
+    "simulate_dice": true
+  }
 }
 ```
-
-Response:
-
-```json
-{
-  "results": [11],
-  "notation": "2d6+3",
-  "proof": "a1b2c3..."
-}
-```
-
----
-
-### Economy
-
-#### Get Balance
-
-```http
-GET /economy/balance
-```
-
-#### Record Usage
-
-```http
-POST /economy/usage
-```
-
----
 
 ### Oracle
 
-#### Get Prediction
-
 ```http
-POST /oracle/predict
+POST /oracle/ask
 ```
 
-```json
-{
-  "my_list": {...},
-  "opponent_list": {...},
-  "mission": "Purge the Enemy"
-}
-```
+Query the Meta-Oracle for rules interpretations or strategic advice.
 
 ---
 
 ## Error Responses
 
+Standard HTTP status codes are used.
+
 ```json
 {
-  "error": "insufficient_credits",
-  "message": "Not enough credits for this operation",
-  "required": 10,
-  "available": 5
+  "status": 400,
+  "error": "invalid_notation",
+  "message": "Syntax error at line 4: Unknown unit 'SM-Tactical'"
 }
 ```
 
 ## OpenAPI Spec
 
-Full spec available at `/docs` when running locally.
+When running the unified platform via Docker, the full OpenAPI specification is available at:
+`http://localhost:8000/docs`

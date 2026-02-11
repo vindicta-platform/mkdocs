@@ -24,6 +24,7 @@ The Dice-Engine currently runs simulations as batch processes with results retur
 ```
 
 **Components**:
+
 - **WS Gateway**: New Node.js service handling WebSocket connections, room management, and event broadcasting.
 - **Event Bus**: Redis Pub/Sub channel per simulation session.
 - **Portal Viewer**: React component rendering animated dice rolls, phase progress bars, and unit casualty tracking.
@@ -87,6 +88,7 @@ The Dice-Engine currently runs simulations as batch processes with results retur
 ### User Stories
 
 #### US-004: Watch Live Simulation
+>
 > As a **player**, I want to **watch my battle simulation in real time** so that **I can see each dice roll as it happens**.
 
 ```gherkin
@@ -113,6 +115,7 @@ Feature: Real-time Battle Viewer
 ```
 
 #### US-005: Viewer Capacity Enforcement
+>
 > As a **system operator**, I want to **limit concurrent viewers** so that **server resources are protected**.
 
 ```gherkin

@@ -33,6 +33,7 @@ The Dice-Engine currently supports **single-run simulations only**. For statisti
 ```
 
 **Components**:
+
 - **Batch API**: Accepts simulation parameters + iteration count; returns a job ID.
 - **Job Queue**: Google Cloud Tasks distributes simulation iterations across workers.
 - **Worker Pool**: Horizontally scaled Dice-Engine instances processing individual runs.
@@ -116,6 +117,7 @@ The Dice-Engine currently supports **single-run simulations only**. For statisti
 ### User Stories
 
 #### US-030: Submit Batch Simulation
+>
 > As a **competitive player**, I want to **run 10,000 simulations of my army matchup** so that **I get statistically reliable win rate predictions**.
 
 ```gherkin
@@ -141,6 +143,7 @@ Feature: Batch Simulation
 ```
 
 #### US-031: Quota Enforcement
+>
 > As a **system operator**, I want to **enforce simulation quotas** so that **resources are fairly distributed**.
 
 ```gherkin

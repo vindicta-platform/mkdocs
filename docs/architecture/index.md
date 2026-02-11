@@ -109,15 +109,15 @@ C4Container
 
 Navigate to domain-specific architecture views:
 
-| Domain | Description | Key Repos |
-|--------|-------------|----------|
-| **[Presentation](#presentation)** | User-facing interfaces and API gateway | Vindicta-Portal, Vindicta-CLI, Vindicta-API, Logi-Slate-UI |
-| **[Game Simulation](#game-simulation)** | Deterministic game mechanics | Dice-Engine, Entropy-Buffer |
-| **[Game Notation](#game-notation)** | Structured game transcription and parsing | WARScribe-Core, WARScribe-Parser, WARScribe-CLI, Battle-Transcript-Toolkit |
-| **[Analytics](#analytics)** | Meta analysis and prediction | Meta-Oracle |
-| **[Primordia](#primordia)** | Deterministic tactical AI and evaluation | Primordia-AI, Arbiter-Predictor |
-| **[Platform Services](#platform-services)** | Shared primitives, usage, metering, compliance | Vindicta-Core, Economy-Engine, Quota-Manager, Metered-SaaS-Logic, Audit-Log-Pro, Atomic-Ledger-Py, Agent-Auditor-SDK |
-| **[Developer Experience](#developer-experience)** | Docs, org config, agents, tooling | Platform-Docs, .github, .specify, .agent, Vindicta-Agents |
+| Domain                                            | Description                                    | Key Repos                                                                                                            |
+| ------------------------------------------------- | ---------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| **[Presentation](#presentation)**                 | User-facing interfaces and API gateway         | Vindicta-Portal, Vindicta-CLI, Vindicta-API, Logi-Slate-UI                                                           |
+| **[Game Simulation](#game-simulation)**           | Deterministic game mechanics                   | Dice-Engine, Entropy-Buffer                                                                                          |
+| **[Game Notation](#game-notation)**               | Structured game transcription and parsing      | WARScribe-Core, WARScribe-Parser, WARScribe-CLI, Battle-Transcript-Toolkit                                           |
+| **[Analytics](#analytics)**                       | Meta analysis and prediction                   | Meta-Oracle                                                                                                          |
+| **[Primordia](#primordia)**                       | Deterministic tactical AI and evaluation       | Primordia-AI, Arbiter-Predictor                                                                                      |
+| **[Platform Services](#platform-services)**       | Shared primitives, usage, metering, compliance | Vindicta-Core, Economy-Engine, Quota-Manager, Metered-SaaS-Logic, Audit-Log-Pro, Atomic-Ledger-Py, Agent-Auditor-SDK |
+| **[Developer Experience](#developer-experience)** | Docs, org config, agents, tooling              | Platform-Docs, .github, .specify, .agent, Vindicta-Agents                                                            |
 
 ---
 
@@ -133,12 +133,13 @@ C4Container
 
     System_Boundary(pres, "Presentation") {
         Container(portal, "Vindicta-Portal", "HTML/JS", "Web portal — static hosted on GCP")
-        Container(ui, "Logi-Slate-UI", "React, TypeScript, Tailwind", "Design system component library")
+        Container(ui, "Vindicta-Portal", "React, TypeScript, Tailwind", "Unified Web Interface")
         Container(cli, "Vindicta-CLI", "Python, Click", "Unified CLI for devs and power users")
         Container(api, "Vindicta-API", "Python, FastAPI", "REST API gateway to all services")
     }
 
-    Container_Ext(core, "Vindicta-Core", "Shared primitives")
+    Container_Ext(foundation, "Vindicta-Foundation", "Base models and axioms")
+    Container_Ext(primordia, "Project Primordia", "Evaluation Engine")
 
     Rel(player, portal, "Browses", "HTTPS")
     Rel(player, cli, "Power-user access", "Terminal")
