@@ -1455,96 +1455,94 @@ All diagrams are generated from the canonical <a href="../../c4/workspace.dsl">w
 </blockquote>
 <hr />
 <h2 id="system-context-c4-level-1">System Context (C4 Level 1)<a class="headerlink" href="#system-context-c4-level-1" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>C4Context
+<pre class="mermaid"><code>C4Context
     title Vindicta Platform — System Context
 
-    Person(player, &quot;Competitive Player&quot;, &quot;Builds lists, tracks matches, analyzes the meta&quot;)
-    Person(to, &quot;Tournament Organizer&quot;, &quot;Runs events, manages pairings, reviews results&quot;)
-    Person(admin, &quot;Platform Admin&quot;, &quot;Maintains infrastructure, monitors health, evolves the platform&quot;)
+    Person(player, "Competitive Player", "Builds lists, tracks matches, analyzes the meta")
+    Person(to, "Tournament Organizer", "Runs events, manages pairings, reviews results")
+    Person(admin, "Platform Admin", "Maintains infrastructure, monitors health, evolves the platform")
 
-    System(vindicta, &quot;Vindicta Platform&quot;, &quot;Unified competitive Warhammer 40k platform for army management, match tracking, meta analysis, and AI predictions&quot;)
+    System(vindicta, "Vindicta Platform", "Unified competitive Warhammer 40k platform for army management, match tracking, meta analysis, and AI predictions")
 
-    System_Ext(gcp, &quot;Google Cloud Platform&quot;, &quot;Hosting, databases, cloud services&quot;)
-    System_Ext(github, &quot;GitHub&quot;, &quot;Source control, CI/CD, project management&quot;)
+    System_Ext(gcp, "Google Cloud Platform", "Hosting, databases, cloud services")
+    System_Ext(github, "GitHub", "Source control, CI/CD, project management")
 
-    Rel(player, vindicta, &quot;Uses&quot;, &quot;HTTPS, CLI&quot;)
-    Rel(to, vindicta, &quot;Manages tournaments via&quot;, &quot;HTTPS&quot;)
-    Rel(admin, vindicta, &quot;Administers and evolves&quot;, &quot;CLI, GitHub&quot;)
-    Rel(vindicta, gcp, &quot;Deployed to&quot;)
-    Rel(vindicta, github, &quot;Source-controlled and built via&quot;)
-</code></pre></div>
+    Rel(player, vindicta, "Uses", "HTTPS, CLI")
+    Rel(to, vindicta, "Manages tournaments via", "HTTPS")
+    Rel(admin, vindicta, "Administers and evolves", "CLI, GitHub")
+    Rel(vindicta, gcp, "Deployed to")
+    Rel(vindicta, github, "Source-controlled and built via")</code></pre>
 <hr />
 <h2 id="container-overview-c4-level-2">Container Overview (C4 Level 2)<a class="headerlink" href="#container-overview-c4-level-2" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>C4Container
+<pre class="mermaid"><code>C4Container
     title Vindicta Platform — Container Overview
 
-    Person(player, &quot;Competitive Player&quot;)
-    Person(admin, &quot;Platform Admin&quot;)
+    Person(player, "Competitive Player")
+    Person(admin, "Platform Admin")
 
-    System_Boundary(vindicta, &quot;Vindicta Platform&quot;) {
+    System_Boundary(vindicta, "Vindicta Platform") {
 
-        Boundary(presentation, &quot;Presentation&quot;) {
-            Container(portal, &quot;Vindicta-Portal&quot;, &quot;HTML/JS&quot;, &quot;Web portal for players&quot;)
-            Container(ui, &quot;Logi-Slate-UI&quot;, &quot;React, Tailwind&quot;, &quot;Component library&quot;)
-            Container(cli, &quot;Vindicta-CLI&quot;, &quot;Python, Click&quot;, &quot;Unified CLI&quot;)
-            Container(api, &quot;Vindicta-API&quot;, &quot;Python, FastAPI&quot;, &quot;REST API gateway&quot;)
+        Boundary(presentation, "Presentation") {
+            Container(portal, "Vindicta-Portal", "HTML/JS", "Web portal for players")
+            Container(ui, "Logi-Slate-UI", "React, Tailwind", "Component library")
+            Container(cli, "Vindicta-CLI", "Python, Click", "Unified CLI")
+            Container(api, "Vindicta-API", "Python, FastAPI", "REST API gateway")
         }
 
-        Boundary(gamesim, &quot;Game Simulation&quot;) {
-            Container(dice, &quot;Dice-Engine&quot;, &quot;Python&quot;, &quot;CSPRNG dice with entropy proofs&quot;)
-            Container(entropy, &quot;Entropy-Buffer&quot;, &quot;Python&quot;, &quot;Thread-safe RNG seeding&quot;)
+        Boundary(gamesim, "Game Simulation") {
+            Container(dice, "Dice-Engine", "Python", "CSPRNG dice with entropy proofs")
+            Container(entropy, "Entropy-Buffer", "Python", "Thread-safe RNG seeding")
         }
 
-        Boundary(notation, &quot;Game Notation&quot;) {
-            Container(wsc, &quot;WARScribe-Core&quot;, &quot;Python&quot;, &quot;WNS notation engine&quot;)
-            Container(wsp, &quot;WARScribe-Parser&quot;, &quot;Python&quot;, &quot;High-level WNS parsing&quot;)
-            Container(wscli, &quot;WARScribe-CLI&quot;, &quot;Python&quot;, &quot;Transcript ingestion CLI&quot;)
-            Container(btt, &quot;Battle-Transcript-Toolkit&quot;, &quot;Python&quot;, &quot;Agent transcript tools&quot;)
+        Boundary(notation, "Game Notation") {
+            Container(wsc, "WARScribe-Core", "Python", "WNS notation engine")
+            Container(wsp, "WARScribe-Parser", "Python", "High-level WNS parsing")
+            Container(wscli, "WARScribe-CLI", "Python", "Transcript ingestion CLI")
+            Container(btt, "Battle-Transcript-Toolkit", "Python", "Agent transcript tools")
         }
 
-        Boundary(analytics, &quot;Analytics&quot;) {
-            Container(oracle, &quot;Meta-Oracle&quot;, &quot;Python&quot;, &quot;AI meta analysis and prediction&quot;)
+        Boundary(analytics, "Analytics") {
+            Container(oracle, "Meta-Oracle", "Python", "AI meta analysis and prediction")
         }
 
-        Boundary(primordia, &quot;Primordia&quot;) {
-            Container(primordiaAI, &quot;Primordia-AI&quot;, &quot;Python&quot;, &quot;Deterministic tactical AI&quot;)
-            Container(arbiter, &quot;Arbiter-Predictor&quot;, &quot;Python&quot;, &quot;Win probability statistics&quot;)
+        Boundary(primordia, "Primordia") {
+            Container(primordiaAI, "Primordia-AI", "Python", "Deterministic tactical AI")
+            Container(arbiter, "Arbiter-Predictor", "Python", "Win probability statistics")
         }
 
-        Boundary(platform, &quot;Platform Services&quot;) {
-            Container(core, &quot;Vindicta-Core&quot;, &quot;Python&quot;, &quot;Shared primitives and config&quot;)
-            Container(economy, &quot;Economy-Engine&quot;, &quot;Python&quot;, &quot;Gas Tank, Ledger, Meter&quot;)
-            Container(quota, &quot;Quota-Manager&quot;, &quot;Python&quot;, &quot;Usage tracking and enforcement&quot;)
-            Container(metered, &quot;Metered-SaaS-Logic&quot;, &quot;Python&quot;, &quot;Dynamic pricing logic&quot;)
-            Container(audit, &quot;Audit-Log-Pro&quot;, &quot;Python&quot;, &quot;Dual-sink audit logging&quot;)
-            Container(ledger, &quot;Atomic-Ledger-Py&quot;, &quot;Python&quot;, &quot;Atomic ledger pattern&quot;)
-            Container(auditor, &quot;Agent-Auditor-SDK&quot;, &quot;Python&quot;, &quot;Mechanical Auditor framework&quot;)
+        Boundary(platform, "Platform Services") {
+            Container(core, "Vindicta-Core", "Python", "Shared primitives and config")
+            Container(economy, "Economy-Engine", "Python", "Gas Tank, Ledger, Meter")
+            Container(quota, "Quota-Manager", "Python", "Usage tracking and enforcement")
+            Container(metered, "Metered-SaaS-Logic", "Python", "Dynamic pricing logic")
+            Container(audit, "Audit-Log-Pro", "Python", "Dual-sink audit logging")
+            Container(ledger, "Atomic-Ledger-Py", "Python", "Atomic ledger pattern")
+            Container(auditor, "Agent-Auditor-SDK", "Python", "Mechanical Auditor framework")
         }
 
-        Boundary(devex, &quot;Developer Experience&quot;) {
-            Container(docs, &quot;Platform-Docs&quot;, &quot;MkDocs&quot;, &quot;Architecture and guides&quot;)
-            Container(ghorg, &quot;.github&quot;, &quot;YAML&quot;, &quot;Org config and templates&quot;)
-            Container(specify, &quot;.specify&quot;, &quot;Markdown&quot;, &quot;SDD constitution&quot;)
-            Container(agent, &quot;.agent&quot;, &quot;YAML&quot;, &quot;Agent workflows&quot;)
-            Container(agents, &quot;Vindicta-Agents&quot;, &quot;Docker&quot;, &quot;Dev container images&quot;)
+        Boundary(devex, "Developer Experience") {
+            Container(docs, "Platform-Docs", "MkDocs", "Architecture and guides")
+            Container(ghorg, ".github", "YAML", "Org config and templates")
+            Container(specify, ".specify", "Markdown", "SDD constitution")
+            Container(agent, ".agent", "YAML", "Agent workflows")
+            Container(agents, "Vindicta-Agents", "Docker", "Dev container images")
         }
     }
 
-    Rel(player, portal, &quot;Browses&quot;, &quot;HTTPS&quot;)
-    Rel(player, cli, &quot;Power-user access&quot;, &quot;Terminal&quot;)
-    Rel(admin, cli, &quot;Platform ops&quot;, &quot;Terminal&quot;)
-    Rel(admin, docs, &quot;Reads architecture&quot;, &quot;HTTPS&quot;)
-    Rel(portal, api, &quot;Calls&quot;, &quot;REST/JSON&quot;)
-    Rel(cli, api, &quot;Calls&quot;, &quot;REST/JSON&quot;)
-    Rel(api, dice, &quot;Requests dice rolls&quot;)
-    Rel(api, oracle, &quot;Requests predictions&quot;)
-    Rel(api, wsc, &quot;Processes notation&quot;)
-    Rel(api, quota, &quot;Enforces quotas&quot;)
-    Rel(dice, entropy, &quot;Seeds from&quot;)
-    Rel(oracle, arbiter, &quot;Uses win probability&quot;)
-    Rel(primordiaAI, dice, &quot;Simulates via&quot;)
-    Rel(wsp, wsc, &quot;Parses via&quot;)
-</code></pre></div>
+    Rel(player, portal, "Browses", "HTTPS")
+    Rel(player, cli, "Power-user access", "Terminal")
+    Rel(admin, cli, "Platform ops", "Terminal")
+    Rel(admin, docs, "Reads architecture", "HTTPS")
+    Rel(portal, api, "Calls", "REST/JSON")
+    Rel(cli, api, "Calls", "REST/JSON")
+    Rel(api, dice, "Requests dice rolls")
+    Rel(api, oracle, "Requests predictions")
+    Rel(api, wsc, "Processes notation")
+    Rel(api, quota, "Enforces quotas")
+    Rel(dice, entropy, "Seeds from")
+    Rel(oracle, arbiter, "Uses win probability")
+    Rel(primordiaAI, dice, "Simulates via")
+    Rel(wsp, wsc, "Parses via")</code></pre>
 <hr />
 <h2 id="domain-views">Domain Views<a class="headerlink" href="#domain-views" title="Permanent link">&para;</a></h2>
 <p>Navigate to domain-specific architecture views:</p>
@@ -1596,134 +1594,127 @@ All diagrams are generated from the canonical <a href="../../c4/workspace.dsl">w
 </table>
 <hr />
 <h3 id="presentation">Presentation<a class="headerlink" href="#presentation" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>C4Container
+<pre class="mermaid"><code>C4Container
     title Presentation Domain
 
-    Person(player, &quot;Competitive Player&quot;)
-    Person(to, &quot;Tournament Organizer&quot;)
-    Person(admin, &quot;Platform Admin&quot;)
+    Person(player, "Competitive Player")
+    Person(to, "Tournament Organizer")
+    Person(admin, "Platform Admin")
 
-    System_Boundary(pres, &quot;Presentation&quot;) {
-        Container(portal, &quot;Vindicta-Portal&quot;, &quot;HTML/JS&quot;, &quot;Web portal — static hosted on GCP&quot;)
-        Container(ui, &quot;Vindicta-Portal&quot;, &quot;React, TypeScript, Tailwind&quot;, &quot;Unified Web Interface&quot;)
-        Container(cli, &quot;Vindicta-CLI&quot;, &quot;Python, Click&quot;, &quot;Unified CLI for devs and power users&quot;)
-        Container(api, &quot;Vindicta-API&quot;, &quot;Python, FastAPI&quot;, &quot;REST API gateway to all services&quot;)
+    System_Boundary(pres, "Presentation") {
+        Container(portal, "Vindicta-Portal", "HTML/JS", "Web portal — static hosted on GCP")
+        Container(ui, "Vindicta-Portal", "React, TypeScript, Tailwind", "Unified Web Interface")
+        Container(cli, "Vindicta-CLI", "Python, Click", "Unified CLI for devs and power users")
+        Container(api, "Vindicta-API", "Python, FastAPI", "REST API gateway to all services")
     }
 
-    Container_Ext(foundation, &quot;Vindicta-Foundation&quot;, &quot;Base models and axioms&quot;)
-    Container_Ext(primordia, &quot;Project Primordia&quot;, &quot;Evaluation Engine&quot;)
+    Container_Ext(foundation, "Vindicta-Foundation", "Base models and axioms")
+    Container_Ext(primordia, "Project Primordia", "Evaluation Engine")
 
-    Rel(player, portal, &quot;Browses&quot;, &quot;HTTPS&quot;)
-    Rel(player, cli, &quot;Power-user access&quot;, &quot;Terminal&quot;)
-    Rel(to, portal, &quot;Manages events&quot;, &quot;HTTPS&quot;)
-    Rel(admin, cli, &quot;Platform operations&quot;, &quot;Terminal&quot;)
-    Rel(portal, ui, &quot;Uses components from&quot;)
-    Rel(portal, api, &quot;Calls&quot;, &quot;REST/JSON&quot;)
-    Rel(cli, api, &quot;Calls&quot;, &quot;REST/JSON&quot;)
-    Rel(api, core, &quot;Uses shared primitives&quot;)
-    Rel(cli, core, &quot;Uses shared primitives&quot;)
-</code></pre></div>
+    Rel(player, portal, "Browses", "HTTPS")
+    Rel(player, cli, "Power-user access", "Terminal")
+    Rel(to, portal, "Manages events", "HTTPS")
+    Rel(admin, cli, "Platform operations", "Terminal")
+    Rel(portal, ui, "Uses components from")
+    Rel(portal, api, "Calls", "REST/JSON")
+    Rel(cli, api, "Calls", "REST/JSON")
+    Rel(api, core, "Uses shared primitives")
+    Rel(cli, core, "Uses shared primitives")</code></pre>
 <h3 id="game-simulation">Game Simulation<a class="headerlink" href="#game-simulation" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>C4Container
+<pre class="mermaid"><code>C4Container
     title Game Simulation Domain
 
-    Container_Ext(api, &quot;Vindicta-API&quot;, &quot;REST gateway&quot;)
+    Container_Ext(api, "Vindicta-API", "REST gateway")
 
-    System_Boundary(sim, &quot;Game Simulation&quot;) {
-        Container(dice, &quot;Dice-Engine&quot;, &quot;Python&quot;, &quot;CSPRNG dice roller with entropy proofs&quot;)
-        Container(entropy, &quot;Entropy-Buffer&quot;, &quot;Python&quot;, &quot;Thread-safe buffered entropy management&quot;)
+    System_Boundary(sim, "Game Simulation") {
+        Container(dice, "Dice-Engine", "Python", "CSPRNG dice roller with entropy proofs")
+        Container(entropy, "Entropy-Buffer", "Python", "Thread-safe buffered entropy management")
     }
 
-    Rel(api, dice, &quot;Requests dice rolls&quot;)
-    Rel(dice, entropy, &quot;Seeds RNG from&quot;)
-</code></pre></div>
+    Rel(api, dice, "Requests dice rolls")
+    Rel(dice, entropy, "Seeds RNG from")</code></pre>
 <h3 id="game-notation">Game Notation<a class="headerlink" href="#game-notation" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>C4Container
+<pre class="mermaid"><code>C4Container
     title Game Notation Domain
 
-    Container_Ext(api, &quot;Vindicta-API&quot;, &quot;REST gateway&quot;)
+    Container_Ext(api, "Vindicta-API", "REST gateway")
 
-    System_Boundary(notation, &quot;Game Notation&quot;) {
-        Container(wsc, &quot;WARScribe-Core&quot;, &quot;Python&quot;, &quot;Wargame Notation System engine&quot;)
-        Container(wsp, &quot;WARScribe-Parser&quot;, &quot;Python&quot;, &quot;High-level WNS parsing library&quot;)
-        Container(wscli, &quot;WARScribe-CLI&quot;, &quot;Python&quot;, &quot;Local transcript ingestion CLI&quot;)
-        Container(btt, &quot;Battle-Transcript-Toolkit&quot;, &quot;Python&quot;, &quot;Complex agent transcript handling&quot;)
+    System_Boundary(notation, "Game Notation") {
+        Container(wsc, "WARScribe-Core", "Python", "Wargame Notation System engine")
+        Container(wsp, "WARScribe-Parser", "Python", "High-level WNS parsing library")
+        Container(wscli, "WARScribe-CLI", "Python", "Local transcript ingestion CLI")
+        Container(btt, "Battle-Transcript-Toolkit", "Python", "Complex agent transcript handling")
     }
 
-    Rel(api, wsc, &quot;Processes game notation&quot;)
-    Rel(wsp, wsc, &quot;Parses WNS via&quot;)
-    Rel(wscli, wsp, &quot;Uses&quot;)
-    Rel(btt, wsc, &quot;Processes transcripts via&quot;)
-</code></pre></div>
+    Rel(api, wsc, "Processes game notation")
+    Rel(wsp, wsc, "Parses WNS via")
+    Rel(wscli, wsp, "Uses")
+    Rel(btt, wsc, "Processes transcripts via")</code></pre>
 <h3 id="analytics">Analytics<a class="headerlink" href="#analytics" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>C4Container
+<pre class="mermaid"><code>C4Container
     title Analytics Domain
 
-    Container_Ext(api, &quot;Vindicta-API&quot;, &quot;REST gateway&quot;)
-    Container_Ext(wsc, &quot;WARScribe-Core&quot;, &quot;WNS engine&quot;)
-    Container_Ext(arbiter, &quot;Arbiter-Predictor&quot;, &quot;Win probability&quot;)
+    Container_Ext(api, "Vindicta-API", "REST gateway")
+    Container_Ext(wsc, "WARScribe-Core", "WNS engine")
+    Container_Ext(arbiter, "Arbiter-Predictor", "Win probability")
 
-    System_Boundary(analytics, &quot;Analytics&quot;) {
-        Container(oracle, &quot;Meta-Oracle&quot;, &quot;Python&quot;, &quot;AI debate engine for meta prediction&quot;)
+    System_Boundary(analytics, "Analytics") {
+        Container(oracle, "Meta-Oracle", "Python", "AI debate engine for meta prediction")
     }
 
-    Rel(api, oracle, &quot;Requests predictions&quot;)
-    Rel(oracle, arbiter, &quot;Uses win probability from&quot;)
-    Rel(oracle, wsc, &quot;Reads game notation via&quot;)
-</code></pre></div>
+    Rel(api, oracle, "Requests predictions")
+    Rel(oracle, arbiter, "Uses win probability from")
+    Rel(oracle, wsc, "Reads game notation via")</code></pre>
 <h3 id="primordia">Primordia<a class="headerlink" href="#primordia" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>C4Container
+<pre class="mermaid"><code>C4Container
     title Primordia Domain
 
-    Container_Ext(dice, &quot;Dice-Engine&quot;, &quot;CSPRNG dice&quot;)
+    Container_Ext(dice, "Dice-Engine", "CSPRNG dice")
 
-    System_Boundary(primordia, &quot;Primordia&quot;) {
-        Container(primordiaAI, &quot;Primordia-AI&quot;, &quot;Python&quot;, &quot;Deterministic tactical AI — the Stockfish of Warhammer&quot;)
-        Container(arbiter, &quot;Arbiter-Predictor&quot;, &quot;Python&quot;, &quot;Statistical win probability calculations&quot;)
+    System_Boundary(primordia, "Primordia") {
+        Container(primordiaAI, "Primordia-AI", "Python", "Deterministic tactical AI — the Stockfish of Warhammer")
+        Container(arbiter, "Arbiter-Predictor", "Python", "Statistical win probability calculations")
     }
 
-    Rel(primordiaAI, dice, &quot;Simulates outcomes via&quot;)
-    Rel(primordiaAI, arbiter, &quot;Evaluates positions via&quot;)
-</code></pre></div>
+    Rel(primordiaAI, dice, "Simulates outcomes via")
+    Rel(primordiaAI, arbiter, "Evaluates positions via")</code></pre>
 <h3 id="platform-services">Platform Services<a class="headerlink" href="#platform-services" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>C4Container
+<pre class="mermaid"><code>C4Container
     title Platform Services Domain
 
-    System_Boundary(svc, &quot;Platform Services&quot;) {
-        Container(core, &quot;Vindicta-Core&quot;, &quot;Python&quot;, &quot;Shared primitives, config, interfaces&quot;)
-        Container(economy, &quot;Economy-Engine&quot;, &quot;Python&quot;, &quot;Gas Tank, Atomic Ledger, Usage Meter&quot;)
-        Container(quota, &quot;Quota-Manager&quot;, &quot;Python&quot;, &quot;Usage tracking and enforcement&quot;)
-        Container(metered, &quot;Metered-SaaS-Logic&quot;, &quot;Python&quot;, &quot;Dynamic pricing multipliers&quot;)
-        Container(audit, &quot;Audit-Log-Pro&quot;, &quot;Python&quot;, &quot;Dual-sink transactional audit logging&quot;)
-        Container(ledger, &quot;Atomic-Ledger-Py&quot;, &quot;Python&quot;, &quot;Atomic ledger pattern implementation&quot;)
-        Container(auditor, &quot;Agent-Auditor-SDK&quot;, &quot;Python&quot;, &quot;Mechanical Auditor compliance framework&quot;)
+    System_Boundary(svc, "Platform Services") {
+        Container(core, "Vindicta-Core", "Python", "Shared primitives, config, interfaces")
+        Container(economy, "Economy-Engine", "Python", "Gas Tank, Atomic Ledger, Usage Meter")
+        Container(quota, "Quota-Manager", "Python", "Usage tracking and enforcement")
+        Container(metered, "Metered-SaaS-Logic", "Python", "Dynamic pricing multipliers")
+        Container(audit, "Audit-Log-Pro", "Python", "Dual-sink transactional audit logging")
+        Container(ledger, "Atomic-Ledger-Py", "Python", "Atomic ledger pattern implementation")
+        Container(auditor, "Agent-Auditor-SDK", "Python", "Mechanical Auditor compliance framework")
     }
 
-    Rel(economy, ledger, &quot;Uses atomic ledger pattern&quot;)
-    Rel(economy, metered, &quot;Applies pricing multipliers&quot;)
-    Rel(quota, metered, &quot;Uses metering logic from&quot;)
-    Rel(auditor, audit, &quot;Writes audit trails to&quot;)
-</code></pre></div>
+    Rel(economy, ledger, "Uses atomic ledger pattern")
+    Rel(economy, metered, "Applies pricing multipliers")
+    Rel(quota, metered, "Uses metering logic from")
+    Rel(auditor, audit, "Writes audit trails to")</code></pre>
 <h3 id="developer-experience">Developer Experience<a class="headerlink" href="#developer-experience" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>C4Container
+<pre class="mermaid"><code>C4Container
     title Developer Experience Domain
 
-    Person(admin, &quot;Platform Admin&quot;)
-    System_Ext(github, &quot;GitHub&quot;)
+    Person(admin, "Platform Admin")
+    System_Ext(github, "GitHub")
 
-    System_Boundary(devex, &quot;Developer Experience&quot;) {
-        Container(docs, &quot;Platform-Docs&quot;, &quot;MkDocs Material&quot;, &quot;Architecture, guides, and ADRs&quot;)
-        Container(ghorg, &quot;.github&quot;, &quot;YAML, Markdown&quot;, &quot;Org config, templates, issue forms, roadmap&quot;)
-        Container(specify, &quot;.specify&quot;, &quot;Markdown&quot;, &quot;SDD constitution and memory&quot;)
-        Container(agent, &quot;.agent&quot;, &quot;Markdown, YAML&quot;, &quot;Org-wide agent workflows and automation&quot;)
-        Container(agents, &quot;Vindicta-Agents&quot;, &quot;Docker, PowerShell&quot;, &quot;Dev container images and agent runtimes&quot;)
+    System_Boundary(devex, "Developer Experience") {
+        Container(docs, "Platform-Docs", "MkDocs Material", "Architecture, guides, and ADRs")
+        Container(ghorg, ".github", "YAML, Markdown", "Org config, templates, issue forms, roadmap")
+        Container(specify, ".specify", "Markdown", "SDD constitution and memory")
+        Container(agent, ".agent", "Markdown, YAML", "Org-wide agent workflows and automation")
+        Container(agents, "Vindicta-Agents", "Docker, PowerShell", "Dev container images and agent runtimes")
     }
 
-    Rel(admin, docs, &quot;Reads and evolves architecture&quot;, &quot;HTTPS&quot;)
-    Rel(docs, github, &quot;Published via&quot;, &quot;GitHub Pages&quot;)
-    Rel(ghorg, github, &quot;Configures&quot;, &quot;Org settings&quot;)
-    Rel(agents, github, &quot;Builds via&quot;, &quot;GitHub Actions&quot;)
-</code></pre></div>
+    Rel(admin, docs, "Reads and evolves architecture", "HTTPS")
+    Rel(docs, github, "Published via", "GitHub Pages")
+    Rel(ghorg, github, "Configures", "Org settings")
+    Rel(agents, github, "Builds via", "GitHub Actions")</code></pre>
 <hr />
 <h2 id="evolution-status">Evolution Status<a class="headerlink" href="#evolution-status" title="Permanent link">&para;</a></h2>
 <p>See <a href="evolution/">evolution.md</a> for per-repo maturity tracking and tech radar status.</p>
@@ -1806,6 +1797,8 @@ All diagrams are generated from the canonical <a href="../../c4/workspace.dsl">w
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
       
         <script src="../javascripts/mathjax.js"></script>
       

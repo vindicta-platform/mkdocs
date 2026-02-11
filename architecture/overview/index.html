@@ -1558,28 +1558,28 @@
 <li><strong>Project Primordia</strong> serves as the central evaluation and simulation engine.</li>
 <li>Components communicate through well-defined interfaces and shared foundational models.</li>
 </ul>
-<div class="highlight"><pre><span></span><code>graph TD
+<pre class="mermaid"><code>graph TD
     User[User / Player] --&gt; Portal[Vindicta Portal]
     User --&gt; CLI[Vindicta CLI]
 
-    subgraph &quot;Interface Layer&quot;
+    subgraph "Interface Layer"
         Portal
         CLI
         API[Vindicta API]
     end
 
-    subgraph &quot;Core Domain Services&quot;
+    subgraph "Core Domain Services"
         Orchestrator[Orchestrator / Agents]
         Oracle[Meta-Oracle]
         Economy[Economy Engine]
     end
 
-    subgraph &quot;Evaluation &amp; Physics&quot;
+    subgraph "Evaluation &amp; Physics"
         Primordia[Project Primordia]
         Dice[Dice Engine]
     end
 
-    subgraph &quot;Standardization&quot;
+    subgraph "Standardization"
         WARScribe[WARScribe System]
         Foundation[Vindicta Foundation]
     end
@@ -1596,8 +1596,7 @@
 
     WARScribe -.-&gt; Foundation
     Oracle -.-&gt; Foundation
-    Economy -.-&gt; Foundation
-</code></pre></div>
+    Economy -.-&gt; Foundation</code></pre>
 <h2 id="core-modules">Core Modules<a class="headerlink" href="#core-modules" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1739,6 +1738,8 @@
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
       
         <script src="../../javascripts/mathjax.js"></script>
       
