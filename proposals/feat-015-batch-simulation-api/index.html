@@ -563,6 +563,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../core-concepts/warscribe-whitepaper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WARScribe Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../core-concepts/warscribe/" class="md-nav__link">
         
   
@@ -1447,11 +1475,13 @@
                                         │  (Firestore)  │
                                         └────────────────┘
 </code></pre></div>
-<p><strong>Components</strong>:
-- <strong>Batch API</strong>: Accepts simulation parameters + iteration count; returns a job ID.
-- <strong>Job Queue</strong>: Google Cloud Tasks distributes simulation iterations across workers.
-- <strong>Worker Pool</strong>: Horizontally scaled Dice-Engine instances processing individual runs.
-- <strong>Aggregation Service</strong>: Collects worker results and computes statistical summaries (mean, median, std dev, percentiles, distributions).</p>
+<p><strong>Components</strong>:</p>
+<ul>
+<li><strong>Batch API</strong>: Accepts simulation parameters + iteration count; returns a job ID.</li>
+<li><strong>Job Queue</strong>: Google Cloud Tasks distributes simulation iterations across workers.</li>
+<li><strong>Worker Pool</strong>: Horizontally scaled Dice-Engine instances processing individual runs.</li>
+<li><strong>Aggregation Service</strong>: Collects worker results and computes statistical summaries (mean, median, std dev, percentiles, distributions).</li>
+</ul>
 <h3 id="3-data-model">3. Data Model<a class="headerlink" href="#3-data-model" title="Permanent link">&para;</a></h3>
 <h4 id="batch-job-schema">Batch Job Schema<a class="headerlink" href="#batch-job-schema" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
@@ -1678,6 +1708,12 @@
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

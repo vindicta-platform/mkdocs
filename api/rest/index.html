@@ -569,6 +569,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../core-concepts/warscribe-whitepaper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WARScribe Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../core-concepts/warscribe/" class="md-nav__link">
         
   
@@ -1307,103 +1335,25 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#authentication" class="md-nav__link">
+  <a href="#core-endpoints" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Authentication
+        Core Endpoints
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#endpoints" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Endpoints
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Endpoints">
+    <nav class="md-nav" aria-label="Core Endpoints">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#health" class="md-nav__link">
+  <a href="#evaluation-project-primordia" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Health
+        Evaluation (Project Primordia)
       
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dice" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Dice
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Dice">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#roll-dice" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Roll Dice
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#economy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Economy
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Economy">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#get-balance" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Get Balance
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#record-usage" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Record Usage
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -1415,23 +1365,6 @@
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Oracle">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#get-prediction" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Get Prediction
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -1645,65 +1578,44 @@
 
 <h1 id="rest-api">REST API<a class="headerlink" href="#rest-api" title="Permanent link">&para;</a></h1>
 <p>API reference for the Vindicta Platform.</p>
+<blockquote>
+<p>[!WARNING]
+<strong>Provisional API</strong>: The REST API is currently undergoing strict revision as part of the <strong>Project Primordia</strong> integration. The endpoints below are provisional. For stable interaction, use the <a href="../../getting-started/quickstart/">Vindicta-CLI</a> or the Python SDKs directly.</p>
+</blockquote>
 <hr />
 <h2 id="base-url">Base URL<a class="headerlink" href="#base-url" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>https://api.vindicta.dev/v1  (hosted)
-http://localhost:8000/v1     (local)
+<div class="highlight"><pre><span></span><code>https://api.vindicta.dev/v1  (Provisional Hosted)
+http://localhost:8000/v1     (Local Orchestrator)
 </code></pre></div>
-<h2 id="authentication">Authentication<a class="headerlink" href="#authentication" title="Permanent link">&para;</a></h2>
-<p>Currently open. Authentication coming in v1.1.</p>
-<h2 id="endpoints">Endpoints<a class="headerlink" href="#endpoints" title="Permanent link">&para;</a></h2>
-<h3 id="health">Health<a class="headerlink" href="#health" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="err">GET /health</span>
+<h2 id="core-endpoints">Core Endpoints<a class="headerlink" href="#core-endpoints" title="Permanent link">&para;</a></h2>
+<h3 id="evaluation-project-primordia">Evaluation (Project Primordia)<a class="headerlink" href="#evaluation-project-primordia" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="err">POST /engine/evaluate</span>
 </code></pre></div>
-<p>Returns platform health status.</p>
-<hr />
-<h3 id="dice">Dice<a class="headerlink" href="#dice" title="Permanent link">&para;</a></h3>
-<h4 id="roll-dice">Roll Dice<a class="headerlink" href="#roll-dice" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="err">POST /dice/roll</span>
-</code></pre></div>
+<p>Submit a WARScribe transcript for analysis.</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;notation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2d6+3&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">  </span><span class="nt">&quot;transcript&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;edition&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10th&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;simulate_dice&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Response:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;results&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">11</span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;notation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2d6+3&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;proof&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a1b2c3...&quot;</span>
-<span class="p">}</span>
-</code></pre></div>
-<hr />
-<h3 id="economy">Economy<a class="headerlink" href="#economy" title="Permanent link">&para;</a></h3>
-<h4 id="get-balance">Get Balance<a class="headerlink" href="#get-balance" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="err">GET /economy/balance</span>
-</code></pre></div>
-<h4 id="record-usage">Record Usage<a class="headerlink" href="#record-usage" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="err">POST /economy/usage</span>
-</code></pre></div>
-<hr />
 <h3 id="oracle">Oracle<a class="headerlink" href="#oracle" title="Permanent link">&para;</a></h3>
-<h4 id="get-prediction">Get Prediction<a class="headerlink" href="#get-prediction" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="err">POST /oracle/predict</span>
+<div class="highlight"><pre><span></span><code><span class="err">POST /oracle/ask</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;my_list&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;opponent_list&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;mission&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Purge the Enemy&quot;</span>
-<span class="p">}</span>
-</code></pre></div>
+<p>Query the Meta-Oracle for rules interpretations or strategic advice.</p>
 <hr />
 <h2 id="error-responses">Error Responses<a class="headerlink" href="#error-responses" title="Permanent link">&para;</a></h2>
+<p>Standard HTTP status codes are used.</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;insufficient_credits&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Not enough credits for this operation&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;available&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span>
+<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;invalid_notation&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Syntax error at line 4: Unknown unit &#39;SM-Tactical&#39;&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="openapi-spec">OpenAPI Spec<a class="headerlink" href="#openapi-spec" title="Permanent link">&para;</a></h2>
-<p>Full spec available at <code>/docs</code> when running locally.</p>
+<p>When running the unified platform via Docker, the full OpenAPI specification is available at:
+<code>http://localhost:8000/docs</code></p>
 
 
 
@@ -1781,6 +1693,12 @@ http://localhost:8000/v1     (local)
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

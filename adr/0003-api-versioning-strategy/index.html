@@ -563,6 +563,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../core-concepts/warscribe-whitepaper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WARScribe Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../core-concepts/warscribe/" class="md-nav__link">
         
   
@@ -1426,11 +1454,13 @@
 <p>Proposed</p>
 <h2 id="context">Context<a class="headerlink" href="#context" title="Permanent link">&para;</a></h2>
 <p>The Vindicta Platform API (Vindicta-API) is being designed to serve multiple frontend clients (Vindicta-Portal, Logi-Slate-UI) and external integrations. The API will evolve over time as new features are added and requirements change.</p>
-<p><strong>Question</strong>: How should we version the API to ensure:
-- Backward compatibility for existing clients
-- Clear deprecation policies
-- Minimum disruption to users
-- Alignment with REST best practices</p>
+<p><strong>Question</strong>: How should we version the API to ensure:</p>
+<ul>
+<li>Backward compatibility for existing clients</li>
+<li>Clear deprecation policies</li>
+<li>Minimum disruption to users</li>
+<li>Alignment with REST best practices</li>
+</ul>
 <h2 id="decision">Decision<a class="headerlink" href="#decision" title="Permanent link">&para;</a></h2>
 <p><strong>We will use URL-based versioning with a major version number in the path: <code>/api/v{N}/</code></strong></p>
 <h3 id="versioning-rules">Versioning Rules<a class="headerlink" href="#versioning-rules" title="Permanent link">&para;</a></h3>
@@ -1497,22 +1527,28 @@ Feb 2027:  v2 becomes free tier
 <h2 id="alternatives-considered">Alternatives Considered<a class="headerlink" href="#alternatives-considered" title="Permanent link">&para;</a></h2>
 <h3 id="alternative-1-header-based-versioning">Alternative 1: Header-Based Versioning<a class="headerlink" href="#alternative-1-header-based-versioning" title="Permanent link">&para;</a></h3>
 <p><strong>Approach</strong>: Use <code>Accept: application/vnd.vindicta.v1+json</code> header</p>
-<p><strong>Rejected because</strong>:
-- Harder to test (browsers don't show headers by default)
-- More complex routing in FastAPI
-- Users forget to set headers</p>
+<p><strong>Rejected because</strong>:</p>
+<ul>
+<li>Harder to test (browsers don't show headers by default)</li>
+<li>More complex routing in FastAPI</li>
+<li>Users forget to set headers</li>
+</ul>
 <h3 id="alternative-2-query-parameter-versioning">Alternative 2: Query Parameter Versioning<a class="headerlink" href="#alternative-2-query-parameter-versioning" title="Permanent link">&para;</a></h3>
 <p><strong>Approach</strong>: <code>/api/army?version=1</code></p>
-<p><strong>Rejected because</strong>:
-- Non-standard in REST APIs
-- Easy to forget query params
-- Caching becomes complex</p>
+<p><strong>Rejected because</strong>:</p>
+<ul>
+<li>Non-standard in REST APIs</li>
+<li>Easy to forget query params</li>
+<li>Caching becomes complex</li>
+</ul>
 <h3 id="alternative-3-no-versioning-breaking-changes-only">Alternative 3: No Versioning (Breaking Changes Only)<a class="headerlink" href="#alternative-3-no-versioning-breaking-changes-only" title="Permanent link">&para;</a></h3>
 <p><strong>Approach</strong>: Single <code>/api/</code> prefix, breaking changes force all clients to upgrade</p>
-<p><strong>Rejected because</strong>:
-- Violates Platform Constitution (no unauthorized disruption)
-- Free tier users can't be forced to upgrade
-- Doesn't support gradual migration</p>
+<p><strong>Rejected because</strong>:</p>
+<ul>
+<li>Violates Platform Constitution (no unauthorized disruption)</li>
+<li>Free tier users can't be forced to upgrade</li>
+<li>Doesn't support gradual migration</li>
+</ul>
 <h2 id="compliance">Compliance<a class="headerlink" href="#compliance" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1644,6 +1680,12 @@ Feb 2027:  v2 becomes free tier
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

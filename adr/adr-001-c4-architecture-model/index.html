@@ -563,6 +563,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../core-concepts/warscribe-whitepaper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WARScribe Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../core-concepts/warscribe/" class="md-nav__link">
         
   
@@ -1427,11 +1455,13 @@
 <p>2026-02-07</p>
 <h2 id="context">Context<a class="headerlink" href="#context" title="Permanent link">&para;</a></h2>
 <p>The Vindicta Platform has an exploding architectural footprint across 26+ repositories spanning multiple functional domains. There is no single view or entrypoint for an administrator to understand the full system topology, dependencies, and evolution state.</p>
-<p>Alternatives considered:
-- <strong>Pure Mermaid diagrams</strong> — Simple, no tooling. But lacks single-model/many-views semantics; each diagram is a disconnected artifact that drifts independently.
-- <strong>Structurizr (hosted SaaS)</strong> — Full-featured but introduces external dependency and cost.
-- <strong>Doc sites (MkDocs-only)</strong> — Already in use for Platform-Docs, but prose-based architecture docs don't provide the structured, queryable model needed.
-- <strong>Structurizr DSL (local)</strong> — Single <code>.dsl</code> file is the source of truth. Multiple views (C4 L1–L3) are derived from one model. Tooling is open-source. Diagrams are CI-generated artifacts, never hand-edited.</p>
+<p>Alternatives considered:</p>
+<ul>
+<li><strong>Pure Mermaid diagrams</strong> — Simple, no tooling. But lacks single-model/many-views semantics; each diagram is a disconnected artifact that drifts independently.</li>
+<li><strong>Structurizr (hosted SaaS)</strong> — Full-featured but introduces external dependency and cost.</li>
+<li><strong>Doc sites (MkDocs-only)</strong> — Already in use for Platform-Docs, but prose-based architecture docs don't provide the structured, queryable model needed.</li>
+<li><strong>Structurizr DSL (local)</strong> — Single <code>.dsl</code> file is the source of truth. Multiple views (C4 L1–L3) are derived from one model. Tooling is open-source. Diagrams are CI-generated artifacts, never hand-edited.</li>
+</ul>
 <h2 id="decision">Decision<a class="headerlink" href="#decision" title="Permanent link">&para;</a></h2>
 <p>Use <strong>Structurizr DSL</strong> (<code>workspace.dsl</code>) as the canonical architecture model for the Vindicta Platform.</p>
 <ul>
@@ -1525,6 +1555,12 @@
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

@@ -569,6 +569,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../core-concepts/warscribe-whitepaper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WARScribe Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../core-concepts/warscribe/" class="md-nav__link">
         
   
@@ -1162,10 +1190,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#option-1-cli-recommended" class="md-nav__link">
+  <a href="#option-1-unified-cli" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Option 1: CLI (Recommended)
+        Option 1: Unified CLI
       
     </span>
   </a>
@@ -1173,10 +1201,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#option-2-local-api-server" class="md-nav__link">
+  <a href="#option-2-full-platform-docker" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Option 2: Local API Server
+        Option 2: Full Platform (Docker)
       
     </span>
   </a>
@@ -1184,10 +1212,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#option-3-ui-only" class="md-nav__link">
+  <a href="#option-3-interface-only-portal" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Option 3: UI Only
+        Option 3: Interface Only (Portal)
       
     </span>
   </a>
@@ -1537,43 +1565,39 @@
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Python 3.10+</li>
-<li><a href="https://github.com/astral-sh/uv">uv</a> (recommended) or pip</li>
+<li><a href="https://github.com/astral-sh/uv">uv</a> (recommended)</li>
+<li>Docker &amp; Docker Compose (for full platform)</li>
 <li>A terminal</li>
 </ul>
-<h2 id="option-1-cli-recommended">Option 1: CLI (Recommended)<a class="headerlink" href="#option-1-cli-recommended" title="Permanent link">&para;</a></h2>
-<p>The fastest way to start is with the unified CLI:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Install the CLI</span>
-uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/vindicta-platform/Vindicta-CLI.git
+<h2 id="option-1-unified-cli">Option 1: Unified CLI<a class="headerlink" href="#option-1-unified-cli" title="Permanent link">&para;</a></h2>
+<p>The <code>Vindicta-CLI</code> provides a unified entry point for all platform tools.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Clone the CLI repository</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/vindicta-platform/Vindicta-CLI.git
+<span class="nb">cd</span><span class="w"> </span>Vindicta-CLI
 
-<span class="c1"># Check installation</span>
+<span class="c1"># Install with uv</span>
+uv<span class="w"> </span>sync
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+
+<span class="c1"># Verify installation</span>
 vindicta<span class="w"> </span>--version
-
-<span class="c1"># Roll some dice</span>
-vindicta<span class="w"> </span>dice<span class="w"> </span>roll<span class="w"> </span>2d6
-
-<span class="c1"># Validate an army list</span>
-vindicta<span class="w"> </span>warscribe<span class="w"> </span>validate<span class="w"> </span>mylist.json
 </code></pre></div>
-<h2 id="option-2-local-api-server">Option 2: Local API Server<a class="headerlink" href="#option-2-local-api-server" title="Permanent link">&para;</a></h2>
-<p>Run the full platform locally:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Clone the platform core</span>
-git<span class="w"> </span>clone<span class="w"> </span>https://github.com/vindicta-platform/platform-core.git
-<span class="nb">cd</span><span class="w"> </span>platform-core
+<h2 id="option-2-full-platform-docker">Option 2: Full Platform (Docker)<a class="headerlink" href="#option-2-full-platform-docker" title="Permanent link">&para;</a></h2>
+<p>Run the entire suite (Portal, Engine, Oracle) locally using Docker.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Clone the Orchestrator / Platform Root</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/vindicta-platform/vindicta-platform.git
+<span class="nb">cd</span><span class="w"> </span>vindicta-platform
 
-<span class="c1"># Install dependencies</span>
-uv<span class="w"> </span>venv
-uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;.[dev]&quot;</span>
+<span class="c1"># Start all services</span>
+docker-compose<span class="w"> </span>up<span class="w"> </span>-d
 
-<span class="c1"># Start the server</span>
-uvicorn<span class="w"> </span>vindicta.api:app<span class="w"> </span>--reload
-
-<span class="c1"># API is now at http://localhost:8000</span>
-<span class="c1"># Docs at http://localhost:8000/docs</span>
+<span class="c1"># Access the Portal</span>
+<span class="c1"># Open http://localhost:3000</span>
 </code></pre></div>
-<h2 id="option-3-ui-only">Option 3: UI Only<a class="headerlink" href="#option-3-ui-only" title="Permanent link">&para;</a></h2>
-<p>For the visual experience:</p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/vindicta-platform/Logi-Slate-UI.git
-<span class="nb">cd</span><span class="w"> </span>Logi-Slate-UI
+<h2 id="option-3-interface-only-portal">Option 3: Interface Only (Portal)<a class="headerlink" href="#option-3-interface-only-portal" title="Permanent link">&para;</a></h2>
+<p>If you only want to work on the frontend:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/vindicta-platform/Vindicta-Portal.git
+<span class="nb">cd</span><span class="w"> </span>Vindicta-Portal
 npm<span class="w"> </span>install
 npm<span class="w"> </span>run<span class="w"> </span>dev
 
@@ -1582,9 +1606,9 @@ npm<span class="w"> </span>run<span class="w"> </span>dev
 <hr />
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="../installation/">Installation Guide</a> — Detailed setup instructions</li>
-<li><a href="../first-match/">Your First Match</a> — Record a game step by step</li>
-<li><a href="../../features/army-management/">Army Management</a> — Build and validate lists</li>
+<li><a href="../installation/">Installation Guide</a> — Detailed setup instructions for each meso-repository.</li>
+<li><a href="../../features/army-management/">WARScribe System</a> — Learn the notation format.</li>
+<li><a href="../../architecture/overview/">Architecture</a> — Understand how the modules connect.</li>
 </ul>
 
 
@@ -1663,6 +1687,12 @@ npm<span class="w"> </span>run<span class="w"> </span>dev
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

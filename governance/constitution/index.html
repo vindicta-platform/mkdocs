@@ -18,7 +18,7 @@
         <link rel="prev" href="../../roadmap/">
       
       
-        <link rel="next" href="../../core-concepts/warscribe/">
+        <link rel="next" href="../../core-concepts/warscribe-whitepaper/">
       
       
         
@@ -640,6 +640,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../core-concepts/warscribe-whitepaper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WARScribe Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1518,14 +1546,14 @@
 <ul>
 <li><strong>AX-01 (Entity Identity):</strong> Every object in the simulation (units, terrain, objectives) must possess a unique, immutable identifier and a set of stateful attributes.</li>
 <li><strong>AX-02 (Dimensionality):</strong> All interactions occur within a bounded 3D coordinate system where distances are non-negative scalar values.</li>
-<li><strong>AX-03 (Probability Source):</strong> Outcomes of uncertain events are determined by an object with $N$ faces, each having an equal probability of $1/N$ (The "Die").</li>
+<li><strong>AX-03 (Probability Source):</strong> Outcomes of uncertain events are determined by an object with <span class="arithmatex">\(N\)</span> faces, each having an equal probability of <span class="arithmatex">\(1/N\)</span> (The "Die").</li>
 <li><strong>AX-04 (Temporal Discretization):</strong> The simulation progresses through non-overlapping steps (Phases/Turns).</li>
 </ul>
 <h2 id="iii-first-order-postulates-the-abstract-mechanics">III. First-Order Postulates (The Abstract Mechanics)<a class="headerlink" href="#iii-first-order-postulates-the-abstract-mechanics" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>P1-01 (The Translation Postulate):</strong> An entity may change its spatial coordinates (Move) provided the distance $d$ does not exceed a defined limit $L$.</li>
+<li><strong>P1-01 (The Translation Postulate):</strong> An entity may change its spatial coordinates (Move) provided the distance <span class="arithmatex">\(d\)</span> does not exceed a defined limit <span class="arithmatex">\(L\)</span>.</li>
 <li><strong>P1-02 (The Interaction Postulate):</strong> Entity A may affect the state of Entity B (Attack/Buff) if a logical condition (Line of Sight/Range) is met.</li>
-<li><strong>P1-03 (The Unity Postulate):</strong> A "Unit" is a distributed entity of $M$ models that must maintain a geometric "Coherency" defined by the specific Ruleset.</li>
+<li><strong>P1-03 (The Unity Postulate):</strong> A "Unit" is a distributed entity of <span class="arithmatex">\(M\)</span> models that must maintain a geometric "Coherency" defined by the specific Ruleset.</li>
 </ul>
 <hr />
 <blockquote>
@@ -1608,6 +1636,12 @@
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

@@ -563,6 +563,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../core-concepts/warscribe-whitepaper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WARScribe Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../core-concepts/warscribe/" class="md-nav__link">
         
   
@@ -1438,10 +1466,12 @@
 │  (Browser)   │              │              │    Sub)        │              │
 └──────────────┘              └──────────────┘                └──────────────┘
 </code></pre></div>
-<p><strong>Components</strong>:
-- <strong>WS Gateway</strong>: New Node.js service handling WebSocket connections, room management, and event broadcasting.
-- <strong>Event Bus</strong>: Redis Pub/Sub channel per simulation session.
-- <strong>Portal Viewer</strong>: React component rendering animated dice rolls, phase progress bars, and unit casualty tracking.</p>
+<p><strong>Components</strong>:</p>
+<ul>
+<li><strong>WS Gateway</strong>: New Node.js service handling WebSocket connections, room management, and event broadcasting.</li>
+<li><strong>Event Bus</strong>: Redis Pub/Sub channel per simulation session.</li>
+<li><strong>Portal Viewer</strong>: React component rendering animated dice rolls, phase progress bars, and unit casualty tracking.</li>
+</ul>
 <h3 id="3-data-model">3. Data Model<a class="headerlink" href="#3-data-model" title="Permanent link">&para;</a></h3>
 <h4 id="websocket-event-schema">WebSocket Event Schema<a class="headerlink" href="#websocket-event-schema" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
@@ -1656,6 +1686,12 @@
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

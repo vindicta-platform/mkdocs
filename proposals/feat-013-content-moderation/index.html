@@ -563,6 +563,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../core-concepts/warscribe-whitepaper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WARScribe Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../core-concepts/warscribe/" class="md-nav__link">
         
   
@@ -1443,12 +1471,14 @@
                                │ (Decisions)   │
                                └───────────────┘
 </code></pre></div>
-<p><strong>Pipeline Stages</strong>:
-1. <strong>Ingestion</strong>: All user-generated content (chat messages, club descriptions, army list names) enters the pipeline.
-2. <strong>Automated Scan</strong>: Moderation Agent (built on Agent-Auditor-SDK) uses Google Cloud NLP for toxicity detection.
-3. <strong>Threshold Routing</strong>: Score ≥ 0.9 → auto-block; 0.5–0.9 → manual review queue; &lt; 0.5 → approved.
-4. <strong>Manual Review</strong>: Platform admins review flagged content via an admin dashboard.
-5. <strong>Audit Trail</strong>: All decisions logged via Audit-Log-Pro.</p>
+<p><strong>Pipeline Stages</strong>:</p>
+<ol>
+<li><strong>Ingestion</strong>: All user-generated content (chat messages, club descriptions, army list names) enters the pipeline.</li>
+<li><strong>Automated Scan</strong>: Moderation Agent (built on Agent-Auditor-SDK) uses Google Cloud NLP for toxicity detection.</li>
+<li><strong>Threshold Routing</strong>: Score ≥ 0.9 → auto-block; 0.5–0.9 → manual review queue; &lt; 0.5 → approved.</li>
+<li><strong>Manual Review</strong>: Platform admins review flagged content via an admin dashboard.</li>
+<li><strong>Audit Trail</strong>: All decisions logged via Audit-Log-Pro.</li>
+</ol>
 <h3 id="3-data-model">3. Data Model<a class="headerlink" href="#3-data-model" title="Permanent link">&para;</a></h3>
 <h4 id="new-entities">New Entities<a class="headerlink" href="#new-entities" title="Permanent link">&para;</a></h4>
 <table>
@@ -1677,6 +1707,12 @@
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

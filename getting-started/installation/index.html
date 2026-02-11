@@ -569,6 +569,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../core-concepts/warscribe-whitepaper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WARScribe Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../core-concepts/warscribe/" class="md-nav__link">
         
   
@@ -1230,6 +1258,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#vindicta-portal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vindicta-Portal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#individual-modules" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1240,30 +1279,8 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#logi-slate-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Logi-Slate UI
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#verification" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Verification
-      
-    </span>
-  </a>
   
 </li>
       
@@ -1630,6 +1647,11 @@ powershell<span class="w"> </span>-c<span class="w"> </span><span class="s2">&qu
 uv<span class="w"> </span>venv
 uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;.[dev]&quot;</span>
 </code></pre></div>
+<h3 id="vindicta-portal">Vindicta-Portal<a class="headerlink" href="#vindicta-portal" title="Permanent link">&para;</a></h3>
+<p>The unified web interface for the platform.</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/vindicta-platform/Vindicta-Portal.git
+<span class="nb">cd</span><span class="w"> </span>Vindicta-Portal
+</code></pre></div>
 <h3 id="individual-modules">Individual Modules<a class="headerlink" href="#individual-modules" title="Permanent link">&para;</a></h3>
 <p>Each module can be installed independently:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Core Platform</span>
@@ -1641,24 +1663,24 @@ uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </s
 uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/vindicta-platform/vindicta-economy.git
 uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/vindicta-platform/vindicta-oracle.git
 </code></pre></div>
-<h3 id="logi-slate-ui">Logi-Slate UI<a class="headerlink" href="#logi-slate-ui" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/vindicta-platform/Logi-Slate-UI.git
-<span class="nb">cd</span><span class="w"> </span>Logi-Slate-UI
-npm<span class="w"> </span>install
-npm<span class="w"> </span>run<span class="w"> </span>dev
-</code></pre></div>
-<hr />
-<h2 id="verification">Verification<a class="headerlink" href="#verification" title="Permanent link">&para;</a></h2>
-<p>Verify your installation:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Check CLI</span>
-vindicta<span class="w"> </span>--version
+<p>npm install
+npm run dev
+<div class="highlight"><pre><span></span><code>---
 
-<span class="c1"># Check API</span>
-curl<span class="w"> </span>http://localhost:8000/health
+## Verification
 
-<span class="c1"># Run tests</span>
-pytest<span class="w"> </span>tests/<span class="w"> </span>-v
-</code></pre></div>
+Verify your installation:
+
+```bash
+# Check CLI
+vindicta --version
+
+# Check API
+curl http://localhost:8000/health
+
+# Run tests
+pytest tests/ -v
+</code></pre></div></p>
 <hr />
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <h3 id="uv-lock-file-issues">uv lock file issues<a class="headerlink" href="#uv-lock-file-issues" title="Permanent link">&para;</a></h3>
@@ -1749,6 +1771,12 @@ netstat<span class="w"> </span>-ano<span class="w"> </span><span class="p">|</sp
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

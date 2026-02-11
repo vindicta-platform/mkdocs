@@ -569,6 +569,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../core-concepts/warscribe-whitepaper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WARScribe Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../core-concepts/warscribe/" class="md-nav__link">
         
   
@@ -1524,80 +1552,115 @@
 <p>Vindicta's modular architecture explained.</p>
 <hr />
 <h2 id="design-philosophy">Design Philosophy<a class="headerlink" href="#design-philosophy" title="Permanent link">&para;</a></h2>
-<p>Vindicta follows a <strong>modular monolith</strong> approach:</p>
+<p>Vindicta follows a <strong>modular meso-repository</strong> approach:</p>
 <ul>
-<li>Each component is a standalone, independently deployable module</li>
-<li>Components communicate through well-defined interfaces</li>
-<li>The platform-core integrates all modules for unified deployment</li>
+<li><strong>Meso-Repositories</strong> group logically related components (e.g., <code>warscribe-system</code> contains Core, CLI, and Parser).</li>
+<li><strong>Project Primordia</strong> serves as the central evaluation and simulation engine.</li>
+<li>Components communicate through well-defined interfaces and shared foundational models.</li>
 </ul>
-<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
-│                     Vindicta Platform                       │
-├─────────────────────────────────────────────────────────────┤
-│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐    │
-│  │ Logi-    │  │ Vindicta │  │ Vindicta │  │ Vindicta │    │
-│  │ Slate UI │  │ CLI      │  │ API      │  │ Core     │    │
-│  └────┬─────┘  └────┬─────┘  └────┬─────┘  └────┬─────┘    │
-│       │             │             │             │          │
-│  ─────┴─────────────┴─────────────┴─────────────┴──────    │
-│                                                             │
-│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐    │
-│  │ Dice     │  │ Economy  │  │ Meta-    │  │ WARScribe│    │
-│  │ Engine   │  │ Engine   │  │ Oracle   │  │ Core     │    │
-│  └──────────┘  └──────────┘  └──────────┘  └──────────┘    │
-└─────────────────────────────────────────────────────────────┘
+<div class="highlight"><pre><span></span><code>graph TD
+    User[User / Player] --&gt; Portal[Vindicta Portal]
+    User --&gt; CLI[Vindicta CLI]
+
+    subgraph &quot;Interface Layer&quot;
+        Portal
+        CLI
+        API[Vindicta API]
+    end
+
+    subgraph &quot;Core Domain Services&quot;
+        Orchestrator[Orchestrator / Agents]
+        Oracle[Meta-Oracle]
+        Economy[Economy Engine]
+    end
+
+    subgraph &quot;Evaluation &amp; Physics&quot;
+        Primordia[Project Primordia]
+        Dice[Dice Engine]
+    end
+
+    subgraph &quot;Standardization&quot;
+        WARScribe[WARScribe System]
+        Foundation[Vindicta Foundation]
+    end
+
+    Portal --&gt; API
+    CLI --&gt; API
+    API --&gt; Orchestrator
+    Orchestrator --&gt; Primordia
+    Orchestrator --&gt; Oracle
+    Orchestrator --&gt; Economy
+
+    Primordia --&gt; Dice
+    Primordia --&gt; WARScribe
+
+    WARScribe -.-&gt; Foundation
+    Oracle -.-&gt; Foundation
+    Economy -.-&gt; Foundation
 </code></pre></div>
 <h2 id="core-modules">Core Modules<a class="headerlink" href="#core-modules" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Module</th>
-<th>Purpose</th>
+<th style="text-align: left;">Module</th>
+<th style="text-align: left;">Repository</th>
+<th style="text-align: left;">Purpose</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Vindicta Foundation</strong></td>
-<td>Base models, Architecture, Constitution</td>
+<td style="text-align: left;"><strong>Vindicta Foundation</strong></td>
+<td style="text-align: left;"><code>vindicta-foundation</code></td>
+<td style="text-align: left;">Base models, Architecture, Constitution, Axioms.</td>
 </tr>
 <tr>
-<td><strong>Vindicta Engine</strong></td>
-<td>Physics, Dice, Entropy, Evaluation, AI Core</td>
+<td style="text-align: left;"><strong>Project Primordia</strong></td>
+<td style="text-align: left;"><code>Primordia-AI</code> / <code>vindicta-engine</code></td>
+<td style="text-align: left;">The core evaluation engine for combat simulation and analysis.</td>
 </tr>
 <tr>
-<td><strong>Warscribe System</strong></td>
-<td>Notation, Parsing, Transcripts</td>
+<td style="text-align: left;"><strong>WARScribe System</strong></td>
+<td style="text-align: left;"><code>warscribe-system</code></td>
+<td style="text-align: left;">Universal Wargaming Notation System, Parser, and CLI tools.</td>
 </tr>
 <tr>
-<td><strong>Vindicta Economy</strong></td>
-<td>Ledger, GasTank, Transactions, Achievements</td>
+<td style="text-align: left;"><strong>Vindicta Economy</strong></td>
+<td style="text-align: left;"><code>vindicta-economy</code></td>
+<td style="text-align: left;">Ledger, GasTank, Transactions, and Achievements.</td>
 </tr>
 <tr>
-<td><strong>Vindicta Oracle</strong></td>
-<td>Debate Council, Prediction, Agent Protocol</td>
+<td style="text-align: left;"><strong>Meta-Oracle</strong></td>
+<td style="text-align: left;"><code>vindicta-oracle</code></td>
+<td style="text-align: left;">Debate Council, Prediction markets, and Agent Protocol.</td>
 </tr>
 <tr>
-<td><strong>Vindicta Platform</strong></td>
-<td>API, Portal, UI Lib</td>
+<td style="text-align: left;"><strong>Vindicta Portal</strong></td>
+<td style="text-align: left;"><code>Vindicta-Portal</code></td>
+<td style="text-align: left;">The unified web interface for the platform.</td>
 </tr>
 <tr>
-<td><strong>Vindicta Agents</strong></td>
-<td>SDKs, Workflows, Swarm</td>
+<td style="text-align: left;"><strong>Vindicta Agents</strong></td>
+<td style="text-align: left;"><code>Vindicta-Agents</code></td>
+<td style="text-align: left;">Agentic workflows and swarm intelligence.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="data-flow">Data Flow<a class="headerlink" href="#data-flow" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>User → UI/CLI → API → [ Service Modules ] → Database
-                           │
-                    ┌──────┴──────┐
-                    ↓             ↓
-              Dice Engine   Meta-Oracle
+<div class="highlight"><pre><span></span><code>User → [Portal/CLI] → API → Orchestrator
+                                  │
+                  ┌───────────────┼───────────────┐
+                  ↓               ↓               ↓
+            Project Primordia   Economy      Meta-Oracle
+                  │
+                  ↓
+           WARScribe Notation
 </code></pre></div>
 <hr />
 <h2 id="deployment-options">Deployment Options<a class="headerlink" href="#deployment-options" title="Permanent link">&para;</a></h2>
 <ol>
-<li><strong>Full Platform</strong> — All modules integrated</li>
-<li><strong>Individual Modules</strong> — Use specific components</li>
-<li><strong>Self-Hosted</strong> — Run on your infrastructure</li>
+<li><strong>Full Platform</strong> — All modules integrated via Docker/Orchestrator.</li>
+<li><strong>Individual Modules</strong> — Use specific python packages (e.g., <code>pip install vindicta-warscribe</code>).</li>
+<li><strong>Self-Hosted</strong> — Run the entire stack on your infrastructure using the provided <code>docker-compose</code> setups.</li>
 </ol>
 
 
@@ -1676,6 +1739,12 @@
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

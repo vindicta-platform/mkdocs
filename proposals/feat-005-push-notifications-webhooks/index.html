@@ -563,6 +563,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../core-concepts/warscribe-whitepaper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WARScribe Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../core-concepts/warscribe/" class="md-nav__link">
         
   
@@ -1430,9 +1458,11 @@
 <hr />
 <h2 id="part-a-software-design-document-sdd">Part A: Software Design Document (SDD)<a class="headerlink" href="#part-a-software-design-document-sdd" title="Permanent link">&para;</a></h2>
 <h3 id="1-overview">1. Overview<a class="headerlink" href="#1-overview" title="Permanent link">&para;</a></h3>
-<p>The platform currently has <strong>no event notification system</strong>. Users must manually poll for updates. This proposal introduces:
-1. <strong>Push Notifications</strong>: Firebase Cloud Messaging (FCM) for browser/mobile push.
-2. <strong>Webhooks</strong>: HTTP POST callbacks for third-party integrations (Discord bots, stat trackers, etc.).</p>
+<p>The platform currently has <strong>no event notification system</strong>. Users must manually poll for updates. This proposal introduces:</p>
+<ol>
+<li><strong>Push Notifications</strong>: Firebase Cloud Messaging (FCM) for browser/mobile push.</li>
+<li><strong>Webhooks</strong>: HTTP POST callbacks for third-party integrations (Discord bots, stat trackers, etc.).</li>
+</ol>
 <h3 id="2-system-architecture">2. System Architecture<a class="headerlink" href="#2-system-architecture" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>┌─────────────┐    ┌───────────────┐    ┌────────────────┐
 │  Domain     │───▶│  Event        │───▶│  Dispatcher    │
@@ -1444,10 +1474,12 @@
                                     │  Push   │  │  Delivery   │
                                     └─────────┘  └─────────────┘
 </code></pre></div>
-<p><strong>Flow</strong>:
-1. Domain services emit events to Redis Pub/Sub (e.g., <code>tournament.round_generated</code>, <code>simulation.completed</code>).
-2. The Dispatcher Service consumes events and routes them to registered notification channels.
-3. FCM handles browser push; Webhook Delivery handles HTTP POST to registered URLs.</p>
+<p><strong>Flow</strong>:</p>
+<ol>
+<li>Domain services emit events to Redis Pub/Sub (e.g., <code>tournament.round_generated</code>, <code>simulation.completed</code>).</li>
+<li>The Dispatcher Service consumes events and routes them to registered notification channels.</li>
+<li>FCM handles browser push; Webhook Delivery handles HTTP POST to registered URLs.</li>
+</ol>
 <h3 id="3-data-model">3. Data Model<a class="headerlink" href="#3-data-model" title="Permanent link">&para;</a></h3>
 <h4 id="new-entities">New Entities<a class="headerlink" href="#new-entities" title="Permanent link">&para;</a></h4>
 <table>
@@ -1685,6 +1717,12 @@
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

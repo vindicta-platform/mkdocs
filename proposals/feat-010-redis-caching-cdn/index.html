@@ -563,6 +563,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../core-concepts/warscribe-whitepaper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WARScribe Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../core-concepts/warscribe/" class="md-nav__link">
         
   
@@ -1443,19 +1471,23 @@
                                    │    Truth)      │
                                    └───────────────┘
 </code></pre></div>
-<p><strong>Components</strong>:
-- <strong>Redis (GCP Memorystore)</strong>: In-memory cache for hot data (leaderboards, active tournament standings, session data).
-- <strong>Cache Middleware</strong>: Express.js middleware that checks Redis before hitting Firestore.
-- <strong>Cache Invalidation</strong>: Event-driven invalidation via Pub/Sub when source data changes.
-- <strong>Cloud CDN</strong>: Caches static Portal assets, API responses with <code>Cache-Control</code> headers.</p>
+<p><strong>Components</strong>:</p>
+<ul>
+<li><strong>Redis (GCP Memorystore)</strong>: In-memory cache for hot data (leaderboards, active tournament standings, session data).</li>
+<li><strong>Cache Middleware</strong>: Express.js middleware that checks Redis before hitting Firestore.</li>
+<li><strong>Cache Invalidation</strong>: Event-driven invalidation via Pub/Sub when source data changes.</li>
+<li><strong>Cloud CDN</strong>: Caches static Portal assets, API responses with <code>Cache-Control</code> headers.</li>
+</ul>
 <h3 id="3-data-model">3. Data Model<a class="headerlink" href="#3-data-model" title="Permanent link">&para;</a></h3>
 <h4 id="cache-key-schema">Cache Key Schema<a class="headerlink" href="#cache-key-schema" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>vindicta:{entity}:{id}:{version}
 </code></pre></div>
-<p>Examples:
-- <code>vindicta:army:army-456:v3</code>
-- <code>vindicta:tournament:GT-2026:standings</code>
-- <code>vindicta:meta:faction-winrates:2026-02</code></p>
+<p>Examples:</p>
+<ul>
+<li><code>vindicta:army:army-456:v3</code></li>
+<li><code>vindicta:tournament:GT-2026:standings</code></li>
+<li><code>vindicta:meta:faction-winrates:2026-02</code></li>
+</ul>
 <h4 id="caching-policy">Caching Policy<a class="headerlink" href="#caching-policy" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
@@ -1638,6 +1670,12 @@
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

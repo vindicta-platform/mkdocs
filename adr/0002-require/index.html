@@ -563,6 +563,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../core-concepts/warscribe-whitepaper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WARScribe Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../core-concepts/warscribe/" class="md-nav__link">
         
   
@@ -1425,28 +1453,36 @@
 <h2 id="status">Status<a class="headerlink" href="#status" title="Permanent link">&para;</a></h2>
 <p>Accepted</p>
 <h2 id="context">Context<a class="headerlink" href="#context" title="Permanent link">&para;</a></h2>
-<p>The Vindicta Platform's 6-week roadmap (Feb 4 - Mar 17, 2026) has aggressive velocity targets:
-- 20 repositories requiring coordinated development
-- Week 1: Foundation scaffolds across 4 priority products (Agent-Auditor-SDK, WARScribe-Core, Primordia-AI, Vindicta-Portal)
-- Week 6: v1.0 production releases for 3 products
-- Daily schedule includes multiple PRs across repositories (e.g., Feb 4 had 4 PRs merged)</p>
-<p>The platform architecture includes an agentic ecosystem with defined roles:
-- <strong>Senior Manager</strong>: Orchestrates platform health and cross-team coordination
-- <strong>Agile Delivery Lead</strong>: Executes <code>/adl-standup</code> and <code>/adl-pr-review</code> daily
-- <strong>Product Owner</strong>: Manages <code>/po-sprint-planning</code> and <code>/po-roadmap-update</code></p>
+<p>The Vindicta Platform's 6-week roadmap (Feb 4 - Mar 17, 2026) has aggressive velocity targets:</p>
+<ul>
+<li>20 repositories requiring coordinated development</li>
+<li>Week 1: Foundation scaffolds across 4 priority products (Agent-Auditor-SDK, WARScribe-Core, Primordia-AI, Vindicta-Portal)</li>
+<li>Week 6: v1.0 production releases for 3 products</li>
+<li>Daily schedule includes multiple PRs across repositories (e.g., Feb 4 had 4 PRs merged)</li>
+</ul>
+<p>The platform architecture includes an agentic ecosystem with defined roles:</p>
+<ul>
+<li><strong>Senior Manager</strong>: Orchestrates platform health and cross-team coordination</li>
+<li><strong>Agile Delivery Lead</strong>: Executes <code>/adl-standup</code> and <code>/adl-pr-review</code> daily</li>
+<li><strong>Product Owner</strong>: Manages <code>/po-sprint-planning</code> and <code>/po-roadmap-update</code></li>
+</ul>
 <p>These agents require AI coding capabilities to execute their workflows autonomously.</p>
-<p>Additionally, the Platform Constitution mandates:
-- <strong>Article II</strong>: Gemini as the AI engine (Gas Tank Model)
-- <strong>Article XVI</strong>: Async-First development for LLM orchestrations
-- <strong>Agent-Auditor-SDK</strong>: Implements rate limiting and priority queuing for AI requests</p>
+<p>Additionally, the Platform Constitution mandates:</p>
+<ul>
+<li><strong>Article II</strong>: Gemini as the AI engine (Gas Tank Model)</li>
+<li><strong>Article XVI</strong>: Async-First development for LLM orchestrations</li>
+<li><strong>Agent-Auditor-SDK</strong>: Implements rate limiting and priority queuing for AI requests</li>
+</ul>
 <p><strong>Question</strong>: Given the roadmap velocity requirements and agentic architecture, should AI-assisted coding be mandatory?</p>
 <h2 id="decision">Decision<a class="headerlink" href="#decision" title="Permanent link">&para;</a></h2>
 <p><strong>AI-assisted coding is REQUIRED for all Vindicta Platform development.</strong></p>
-<p>All development work MUST use approved AI coding tools:
-- <strong>Antigravity</strong> (primary AI coding assistant)
-- <strong>GitHub Copilot</strong> (code completion and reviews)
-- <strong>Agent-Auditor-SDK</strong> (agentic task orchestration)
-- <strong>Gemini AI Studio</strong> (direct API access for agents)</p>
+<p>All development work MUST use approved AI coding tools:</p>
+<ul>
+<li><strong>Antigravity</strong> (primary AI coding assistant)</li>
+<li><strong>GitHub Copilot</strong> (code completion and reviews)</li>
+<li><strong>Agent-Auditor-SDK</strong> (agentic task orchestration)</li>
+<li><strong>Gemini AI Studio</strong> (direct API access for agents)</li>
+</ul>
 <h3 id="enforcement-mechanisms">Enforcement Mechanisms<a class="headerlink" href="#enforcement-mechanisms" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Rate Limiting</strong>: Agent-Auditor-SDK <code>RateLimiter</code> class enforces Gemini free tier limits (60 RPM, 60K TPM)</li>
@@ -1478,18 +1514,22 @@
 <h2 id="alternatives-considered">Alternatives Considered<a class="headerlink" href="#alternatives-considered" title="Permanent link">&para;</a></h2>
 <h3 id="alternative-1-no-ai-assistance-manual-only">Alternative 1: No AI Assistance (Manual Only)<a class="headerlink" href="#alternative-1-no-ai-assistance-manual-only" title="Permanent link">&para;</a></h3>
 <p><strong>Rationale</strong>: Maximum human control, zero AI costs</p>
-<p><strong>Rejected because</strong>:
-- Cannot meet 6-week timeline
-- Single-threaded development (no parallelization)
-- Invalidates agentic ecosystem architecture
-- Contradicts Constitution Article II (Gemini mandate)</p>
+<p><strong>Rejected because</strong>:</p>
+<ul>
+<li>Cannot meet 6-week timeline</li>
+<li>Single-threaded development (no parallelization)</li>
+<li>Invalidates agentic ecosystem architecture</li>
+<li>Contradicts Constitution Article II (Gemini mandate)</li>
+</ul>
 <h3 id="alternative-2-optional-ai-assistance">Alternative 2: Optional AI Assistance<a class="headerlink" href="#alternative-2-optional-ai-assistance" title="Permanent link">&para;</a></h3>
 <p><strong>Rationale</strong>: Flexibility for developers, can be enabled per-project</p>
-<p><strong>Rejected because</strong>:
-- Inconsistent velocity across repositories
-- Schedule uncertainty
-- Undermines agent autonomy
-- Doesn't leverage platform architecture</p>
+<p><strong>Rejected because</strong>:</p>
+<ul>
+<li>Inconsistent velocity across repositories</li>
+<li>Schedule uncertainty</li>
+<li>Undermines agent autonomy</li>
+<li>Doesn't leverage platform architecture</li>
+</ul>
 <h2 id="compliance">Compliance<a class="headerlink" href="#compliance" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1522,13 +1562,15 @@
 </tbody>
 </table>
 <h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
-<p>Week 1 demonstrated successful AI-assisted development:
-- <strong>6 PRs merged</strong> in 2 days (Feb 4-5)
-- <strong>Agent-Auditor-SDK PR #12</strong>: Rate limiting prevents 429 errors
-- <strong>WARScribe-Core PR #8</strong>: Edition abstraction with tests
-- <strong>Primordia-AI PR #6</strong>: DuckDB schema implementation
-- <strong>Vindicta-Portal PR #21, #22</strong>: Firebase config + design tokens
-- <strong>Platform-Docs PR #2</strong>: Branding updates</p>
+<p>Week 1 demonstrated successful AI-assisted development:</p>
+<ul>
+<li><strong>6 PRs merged</strong> in 2 days (Feb 4-5)</li>
+<li><strong>Agent-Auditor-SDK PR #12</strong>: Rate limiting prevents 429 errors</li>
+<li><strong>WARScribe-Core PR #8</strong>: Edition abstraction with tests</li>
+<li><strong>Primordia-AI PR #6</strong>: DuckDB schema implementation</li>
+<li><strong>Vindicta-Portal PR #21, #22</strong>: Firebase config + design tokens</li>
+<li><strong>Platform-Docs PR #2</strong>: Branding updates</li>
+</ul>
 <p>All implementations approved by architecture review with 100% Constitution compliance.</p>
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
@@ -1615,6 +1657,12 @@
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

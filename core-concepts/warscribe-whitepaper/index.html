@@ -1,0 +1,2185 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="The unified competitive Warhammer 40k platform">
+      
+      
+        <meta name="author" content="Vindicta Platform Contributors">
+      
+      
+        <link rel="canonical" href="https://vindicta-platform.github.io/Platform-Docs/core-concepts/warscribe-whitepaper/">
+      
+      
+        <link rel="prev" href="../../governance/constitution/">
+      
+      
+        <link rel="next" href="../warscribe/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>WARScribe Whitepaper - Vindicta Platform</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Outfit:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Outfit";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#toward-warscribe-a-rigorous-synthesis-of-formal-notation-systems-and-game-description-languages-for-tabletop-wargaming" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Vindicta Platform" class="md-header__button md-logo" aria-label="Vindicta Platform" data-md-component="logo">
+      
+  <img src="../../assets/vindicta-logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Vindicta Platform
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              WARScribe Whitepaper
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/vindicta-platform/Platform-Docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    vindicta-platform/Platform-Docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../roadmap/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Roadmap
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../governance/constitution/" class="md-tabs__link">
+          
+  
+  
+  Core Concepts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../architecture/overview/" class="md-tabs__link">
+          
+  
+  
+  Architecture
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../features/army-management/" class="md-tabs__link">
+          
+  
+  
+  Features
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../getting-started/quickstart/" class="md-tabs__link">
+          
+  
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../api/rest/" class="md-tabs__link">
+          
+  
+  
+  API Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../contributing/setup/" class="md-tabs__link">
+          
+  
+  
+  Contributing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Vindicta Platform" class="md-nav__button md-logo" aria-label="Vindicta Platform" data-md-component="logo">
+      
+  <img src="../../assets/vindicta-logo.svg" alt="logo">
+
+    </a>
+    Vindicta Platform
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/vindicta-platform/Platform-Docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    vindicta-platform/Platform-Docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/constitution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Constitution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WARScribe Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WARScribe Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-evolution-of-formal-game-notations-historical-precedents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Evolution of Formal Game Notations: Historical Precedents
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Evolution of Formal Game Notations: Historical Precedents">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comparative-mechanics-of-traditional-notations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparative Mechanics of Traditional Notations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#computational-foundations-game-description-languages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Computational Foundations: Game Description Languages
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Computational Foundations: Game Description Languages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-gdl-state-machine-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The GDL State Machine Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-partake-language-and-situational-duality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Partake Language and Situational Duality
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tabletop-specifics-coordinate-systems-and-state-capture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tabletop Specifics: Coordinate Systems and State Capture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tabletop Specifics: Coordinate Systems and State Capture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#relative-vector-notation-rvn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relative Vector Notation (RVN)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#digital-state-capture-and-tournament-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Digital State Capture and Tournament Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solving-the-identity-problem-unique-model-identification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solving the Identity Problem: Unique Model Identification
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Solving the Identity Problem: Unique Model Identification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-semantic-id-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Semantic ID Hierarchy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-resolution-problem-encoding-the-stochastic-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Resolution Problem: Encoding the Stochastic Pipeline
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Resolution Problem: Encoding the Stochastic Pipeline">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-combat-resolution-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Combat Resolution String
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fast-rolling-and-individual-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fast Rolling and Individual Resolution
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-modification-problem-auras-stratagems-and-temporary-effects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Modification Problem: Auras, Stratagems, and Temporary Effects
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Modification Problem: Auras, Stratagems, and Temporary Effects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aura-wrapping-and-temporal-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aura Wrapping and Temporal Logic
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stratagems-as-interrupts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stratagems as Interrupts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#edition-mapping-resilience-across-rule-shifts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Edition Mapping: Resilience Across Rule Shifts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Edition Mapping: Resilience Across Rule Shifts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mapping-edition-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapping Edition Changes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-analysis-of-edition-mapping-9th-10th-and-11th" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detailed Analysis of Edition Mapping: 9th, 10th, and 11th
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technical-breakdown-tabletop-simulator-json-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Technical Breakdown: Tabletop Simulator JSON Structure
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Technical Breakdown: Tabletop Simulator JSON Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#serialized-classes-in-tts-save-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Serialized Classes in TTS Save Files
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-resolution-of-the-modification-problem-in-battletech" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Resolution of the Modification Problem in BattleTech
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Resolution of the Modification Problem in BattleTech">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-gator-algorithm-for-attack-declaration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The GATOR Algorithm for Attack Declaration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-coordinate-reference-systems-crs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced Coordinate Reference Systems (CRS)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion-and-future-directions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion and Future Directions
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../warscribe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WARScribe Manual
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/primordia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Primordia Engine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/inference-layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inference Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quantum Leap Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/c4-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C4 Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/modules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Module Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/cost-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cost Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Features
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Features
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/army-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Army Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/match-tracking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Match Tracking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/meta-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meta Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/ai-predictions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Predictions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/first-match/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Your First Match
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    REST API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Contributing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/standards/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code Standards
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="toward-warscribe-a-rigorous-synthesis-of-formal-notation-systems-and-game-description-languages-for-tabletop-wargaming">Toward WARScribe: A Rigorous Synthesis of Formal Notation Systems and Game Description Languages for Tabletop Wargaming<a class="headerlink" href="#toward-warscribe-a-rigorous-synthesis-of-formal-notation-systems-and-game-description-languages-for-tabletop-wargaming" title="Permanent link">&para;</a></h1>
+<p>The creation of a universal, rigorous wargaming notation system, designated here as WARScribe, requires a departure from the fragmented and informal shorthand systems that currently permeate the tabletop hobby. For decades, players of complex wargames such as Warhammer 40,000 have relied on ad hoc methods for recording game states, ranging from scribbled notes in margins to digital lists that lack temporal coherence. To establish a notation that is truly language-agnostic and edition-independent, it is necessary to synthesize the formal logic of game description languages (GDL) with the spatial precision of coordinate reference systems and the proven efficiency of established competitive notations. This report explores the multidisciplinary foundations required for such a system, addressing the critical issues of unit identity, combat resolution, and modification logic.</p>
+<h2 id="the-evolution-of-formal-game-notations-historical-precedents">The Evolution of Formal Game Notations: Historical Precedents<a class="headerlink" href="#the-evolution-of-formal-game-notations-historical-precedents" title="Permanent link">&para;</a></h2>
+<p>The development of WARScribe must be contextualized within the history of competitive game recording, where the move from narrative description to symbolic shorthand has always marked the professionalization of a discipline. Early chess literature, for instance, relied on lengthy prose to describe each move, which was prone to error and inhibited the preservation of strategic analysis. The transition to Algebraic Chess Notation (ACN) in the 18th century, popularized by Philip Stamma, revolutionized the field by assigning a unique coordinate (a–h for files, 1–8 for ranks) to every square.</p>
+<h3 id="comparative-mechanics-of-traditional-notations">Comparative Mechanics of Traditional Notations<a class="headerlink" href="#comparative-mechanics-of-traditional-notations" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">System</th>
+<th style="text-align: left;">Foundation</th>
+<th style="text-align: left;">Scope</th>
+<th style="text-align: left;">Primary Advantage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Algebraic Chess Notation (ACN)</strong></td>
+<td style="text-align: left;">8x8 Cartesian Grid</td>
+<td style="text-align: left;">Move sequences</td>
+<td style="text-align: left;">Minimal redundancy and language-agnostic symbols.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Portable Game Notation (PGN)</strong></td>
+<td style="text-align: left;">ASCII-based Text</td>
+<td style="text-align: left;">Complete game history</td>
+<td style="text-align: left;">Human-readable and machine-parsable.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Forsyth–Edwards Notation (FEN)</strong></td>
+<td style="text-align: left;">Character String</td>
+<td style="text-align: left;">Static board snapshot</td>
+<td style="text-align: left;">Captures current state in a single line.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Go Shorthand</strong></td>
+<td style="text-align: left;">19x19 Grid Intersections</td>
+<td style="text-align: left;">Strategic placement</td>
+<td style="text-align: left;">Uses symbols (triangles, circles) for grouped analysis.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Music Shorthand</strong></td>
+<td style="text-align: left;">Relative Intervals</td>
+<td style="text-align: left;">Pitch and Rhythm</td>
+<td style="text-align: left;">"Jump Rule" manages relative shifts between notes.</td>
+</tr>
+</tbody>
+</table>
+<p>In chess, the evolution from Descriptive Notation (e.g., "P-K4") to Standard Algebraic Notation (e.g., "e4") demonstrates the value of suppressing machine-redundant information. SAN only specifies the origin square if multiple pieces of the same type can reach the same destination, using the file or rank as a discriminator (e.g., Nge2). For WARScribe, this principle of "disambiguation via origin" is essential for resolving the Identity Problem in mass-combat systems.</p>
+<p>Go notation provides a different perspective, emphasizing the semantic categorization of intersections. Terms such as hoshi (star points) and tengen (origin of heaven) provide fixed references on a larger grid. Furthermore, Go diagrams frequently use symbols like triangles, squares, and circles to denote subsets of stones for strategic discussion, a method that WARScribe could adapt to mark models affected by specific area-of-effect (aura) abilities.</p>
+<p>Musical notation offers a vital lesson in relative versus absolute pitch. Eastern neumes are "differential," indicating whether a pitch rises or falls relative to the previous step rather than its absolute frequency. Shorthand musical notation utilizes a "Jump Rule" where a melody that increases by a perfect fourth or more is placed on an elevated line, remaining there until it descends, at which point it returns to the neutral line. This logic is directly applicable to 3D wargaming movement, where recording a displacement vector relative to the previous position is often more practical than maintaining global coordinates for every model.</p>
+<h2 id="computational-foundations-game-description-languages">Computational Foundations: Game Description Languages<a class="headerlink" href="#computational-foundations-game-description-languages" title="Permanent link">&para;</a></h2>
+<p>Beyond simple shorthand, WARScribe must function as a formal language capable of describing the intricacies of game rules and dynamics to artificial intelligence. Stanford’s Game Description Language (GDL) serves as the primary model for this approach. GDL is a logic-based language designed for General Game Playing (GGP), allowing AI agents to understand games they have never played before by processing a set of declarative rules.</p>
+<h3 id="the-gdl-state-machine-architecture">The GDL State Machine Architecture<a class="headerlink" href="#the-gdl-state-machine-architecture" title="Permanent link">&para;</a></h3>
+<p>GDL models a game as a finite state machine where every state is defined by a set of true propositions. The transition function—the rules of the game—defines what is true in the next state based on the current state and the collective moves of the players.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">GDL Keyword</th>
+<th style="text-align: left;">Logical Function</th>
+<th style="text-align: left;">WARScribe Mapping</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>role</code></td>
+<td style="text-align: left;">Defines player identities</td>
+<td style="text-align: left;">Attacker, Defender, Neutral.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>init</code></td>
+<td style="text-align: left;">Sets the initial state</td>
+<td style="text-align: left;">Deployment zones and army lists.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>legal</code></td>
+<td style="text-align: left;">Determines valid actions</td>
+<td style="text-align: left;">Phase-restricted move or attack eligibility.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>does</code></td>
+<td style="text-align: left;">Records player choices</td>
+<td style="text-align: left;">Specific dice rolls or model repositioning.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>next</code></td>
+<td style="text-align: left;">State update function</td>
+<td style="text-align: left;">Resultant model removals or state changes (e.g., Battle-shock).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>terminal</code></td>
+<td style="text-align: left;">Completion criteria</td>
+<td style="text-align: left;">Mission-specific ending conditions (e.g., Turn 5).</td>
+</tr>
+</tbody>
+</table>
+<p>Standard GDL is limited to deterministic, perfect-information games, but its extension, GDL-II, introduces the <code>sees</code> and <code>random</code> keywords to handle incomplete information and elements of chance. This is critical for wargames, where the outcome of an attack is determined by a stochastic dice pipeline. Ludii (L-GDL) further optimizes this by modeling games as structured trees of "ludemes"—basic units of game information. In L-GDL, the equipment (board, pieces, dice) and rules are parsed as a hierarchy, which allows for highly efficient game simulations. WARScribe can leverage this tree-like structure to resolve the Modification Problem, treating stratagems and auras as modifier nodes that attach to specific branches of the resolution tree.</p>
+<h2 id="the-partake-language-and-situational-duality">The Partake Language and Situational Duality<a class="headerlink" href="#the-partake-language-and-situational-duality" title="Permanent link">&para;</a></h2>
+<p>Partake introduces a critical duality between situations and actors, focusing on how entities accrue attributes over time. Unlike traditional object-oriented systems that require fixed structures, Partake uses a relational model where game objects are symbolic entities defined by tuples of facts (e.g., health P -&gt; 10). This provides a direct solution to the Identity Problem. A model in WARScribe is not a static object but a symbolic ID that gains salience through its relationships to its unit, its datasheet, its current health, and the transient effects acting upon it.</p>
+<p>Partake also utilizes deictic predicates—indexical terms like "the current turn" or "the model designated as the target"—which simplify rule encoding by focusing on the narrative moment. This "linguistic indexicality" allows WARScribe to record complex sequences like "the current unit piles in toward the closest enemy" without needing to resolve every coordinate until the final state is captured.</p>
+<h2 id="tabletop-specifics-coordinate-systems-and-state-capture">Tabletop Specifics: Coordinate Systems and State Capture<a class="headerlink" href="#tabletop-specifics-coordinate-systems-and-state-capture" title="Permanent link">&para;</a></h2>
+<p>Wargaming occurs in a continuous 3D space, making standard Cartesian grids insufficient. The mapping of this space requires a Compound Coordinate Reference System (CCRS), integrating horizontal and vertical geodetic datums. For game engines like Unity and Unreal, the orientation of these axes matters significantly, as they adopt either left-hand or right-hand coordinate systems.</p>
+<h3 id="relative-vector-notation-rvn">Relative Vector Notation (RVN)<a class="headerlink" href="#relative-vector-notation-rvn" title="Permanent link">&para;</a></h3>
+<p>In physical wargaming, recording the absolute position of a model <span class="arithmatex">\((x, y, z)\)</span> is tedious and subject to measurement drift. WARScribe should instead prioritize Relative Vector Notation. Based on the physics of displacement, the vector <span class="arithmatex">\(\vec{d}\)</span> represents the change in position between two points <span class="arithmatex">\(P_1\)</span> and <span class="arithmatex">\(P_2\)</span>.</p>
+<p>The magnitude of displacement is calculated via the Pythagorean theorem:</p>
+<div class="arithmatex">\[d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2}\]</div>
+<p>In WARScribe shorthand, a move is recorded as a displacement vector relative to the starting position:</p>
+<div class="highlight"><pre><span></span><code>MOV:UID1 {5.5&quot;, 135°, +1&quot;}
+</code></pre></div>
+<p>This indicates that UID1 moved 5.5 inches at a 135-degree angle with a vertical gain of 1 inch. This notation is resilient because the displacement vector remains the same regardless of the choice of origin on the table.</p>
+<h3 id="digital-state-capture-and-tournament-data">Digital State Capture and Tournament Data<a class="headerlink" href="#digital-state-capture-and-tournament-data" title="Permanent link">&para;</a></h3>
+<p>Digital platforms provide existing schemas for state capture. Tabletop Simulator (TTS) uses JSON serialization for save files, recording every object's unique GUID, its physics properties (friction, bounciness), and its transform state (position, rotation, scale). BCP (Best Coast Pairings) focuses on tournament-level data, including player rankings, placings, and structured army lists. BCP uses a JSON:API standard that organizes data into resources and operations, which WARScribe must align with to facilitate data interchange.</p>
+<h2 id="solving-the-identity-problem-unique-model-identification">Solving the Identity Problem: Unique Model Identification<a class="headerlink" href="#solving-the-identity-problem-unique-model-identification" title="Permanent link">&para;</a></h2>
+<p>The Identity Problem arises from the need to distinguish between multiple identical models within a single unit. In Warhammer 40,000, identifying "the third model in a squad of ten" is vital for tracking casualties and aura ranges.</p>
+<h3 id="the-semantic-id-hierarchy">The Semantic ID Hierarchy<a class="headerlink" href="#the-semantic-id-hierarchy" title="Permanent link">&para;</a></h3>
+<p>WARScribe addresses this through a hierarchical, semantic ID system:</p>
+<ol>
+<li><strong>Unit Identifier (UID):</strong> A unique tag for the unit based on its role and sequence (e.g., <code>TRP1</code> for the first Troop unit).</li>
+<li><strong>Model Index (MID):</strong> A sequence number within the unit (e.g., <code>TRP1.4</code>).</li>
+<li><strong>Role/Gear Suffix (RGS):</strong> Denotes special equipment or status (e.g., <code>TRP1.4[Melta]</code>).</li>
+</ol>
+<p>This mirrors the structured data in TTS save files, where lists of snap points and vector lines are attached to specific objects. By using semantic IDs instead of raw GUIDs, WARScribe remains human-readable while providing the precision needed to track combat resolution at the individual model level.</p>
+<h2 id="the-resolution-problem-encoding-the-stochastic-pipeline">The Resolution Problem: Encoding the Stochastic Pipeline<a class="headerlink" href="#the-resolution-problem-encoding-the-stochastic-pipeline" title="Permanent link">&para;</a></h2>
+<p>The Resolution Problem involves condensing the multi-step process of wargaming combat—Hit, Wound, Save, Damage (H-W-S-D)—into a compact and reversible string. Standard resolution in Warhammer 40,000 involves rolling to hit based on Ballistic Skill (BS), rolling to wound based on Strength (S) versus Toughness (T), and the target rolling to save based on armor or invulnerable saves.</p>
+<h3 id="the-combat-resolution-string">The Combat Resolution String<a class="headerlink" href="#the-combat-resolution-string" title="Permanent link">&para;</a></h3>
+<p>A WARScribe resolution string for a single attack would look as follows:</p>
+<div class="highlight"><pre><span></span><code>(UID1.4 -&gt; UID2) {H5, W6, S1*X, D2}
+</code></pre></div>
+<ul>
+<li><strong>H5:</strong> Hit roll result of 5 (Success).</li>
+<li><strong>W6:</strong> Wound roll result of 6 (Critical Wound).</li>
+<li><strong>S1*X:</strong> Save roll result of 1 (Failure), with X denoting the destruction of the model.</li>
+<li><strong>D2:</strong> 2 points of damage applied.</li>
+</ul>
+<p>This draws heavily from the BattleTech "GATOR" system, which provides a standardized checklist for calculating to-hit modifiers: Gunner Skill, Attacker Movement, Target Movement, Other, and Range. By encoding the modifiers and the raw dice result, the notation becomes reversible and edition-independent.</p>
+<h3 id="fast-rolling-and-individual-resolution">Fast Rolling and Individual Resolution<a class="headerlink" href="#fast-rolling-and-individual-resolution" title="Permanent link">&para;</a></h3>
+<p>While wargamers often "fast roll" dice for convenience, 40k technically resolves every attack individually. WARScribe must maintain this individual logic. If a unit is damaged, every instance of damage must be applied separately to the same model until it is removed, at which point the next model is selected. WARScribe captures this sequentiality through its string-based resolution, ensuring that spillover damage or "feel no pain" (FNP) rolls are correctly accounted for model-by-model.</p>
+<h2 id="the-modification-problem-auras-stratagems-and-temporary-effects">The Modification Problem: Auras, Stratagems, and Temporary Effects<a class="headerlink" href="#the-modification-problem-auras-stratagems-and-temporary-effects" title="Permanent link">&para;</a></h2>
+<p>Tabletop wargames are defined by dynamic modifiers that shift the probabilities of the stochastic pipeline. Auras (area-of-effect buffs) and Stratagems (reactive abilities) create complex interactions that WARScribe must track.</p>
+<h3 id="aura-wrapping-and-temporal-logic">Aura Wrapping and Temporal Logic<a class="headerlink" href="#aura-wrapping-and-temporal-logic" title="Permanent link">&para;</a></h3>
+<p>Using the Partake model, an aura is not a change to a unit's base datasheet but a situational rule that matches a specific condition. WARScribe handles this via "Aura Wrapping." A unit in proximity to a leader is tagged in the resolution string:</p>
+<div class="highlight"><pre><span></span><code>ATK:(UID1 @AUR:Captain) -&gt; TGT:UID2
+</code></pre></div>
+<p>This indicates that UID1 is attacking while under the influence of the Captain's aura, which might allow for re-rolls of 1s to hit.</p>
+<h3 id="stratagems-as-interrupts">Stratagems as Interrupts<a class="headerlink" href="#stratagems-as-interrupts" title="Permanent link">&para;</a></h3>
+<p>Stratagems like "Overwatch" or "Heroic Intervention" function as temporal interrupts. In 10th edition, the Overwatch stratagem can be triggered during the opponent's movement or charge phase. WARScribe records this as a non-linear branch in the turn sequence:</p>
+<div class="highlight"><pre><span></span><code> -&gt; -&gt; (ATK:UID2 -&gt; UID1)
+</code></pre></div>
+<p>This preserves the causal relationship between the movement of the first unit and the reactive fire of the second.</p>
+<h2 id="edition-mapping-resilience-across-rule-shifts">Edition Mapping: Resilience Across Rule Shifts<a class="headerlink" href="#edition-mapping-resilience-across-rule-shifts" title="Permanent link">&para;</a></h2>
+<p>A primary goal of WARScribe is to remain functional as game systems evolve. Analyzing the transition from 9th to 10th edition Warhammer 40,000 illustrates the required resilience.</p>
+<h3 id="mapping-edition-changes">Mapping Edition Changes<a class="headerlink" href="#mapping-edition-changes" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Mechanic</th>
+<th style="text-align: left;">9th Edition</th>
+<th style="text-align: left;">10th Edition</th>
+<th style="text-align: left;">WARScribe Adaptation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Morale</strong></td>
+<td style="text-align: left;">Combat Attrition (Model removal)</td>
+<td style="text-align: left;">Battle-shock (OC 0, No Stratagems)</td>
+<td style="text-align: left;">Record state `` on Unit ID.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Fight Order</strong></td>
+<td style="text-align: left;">Fight First / Normal / Last</td>
+<td style="text-align: left;">Fight First / Normal (Simplified)</td>
+<td style="text-align: left;">Use priority tags <code>P1</code>, <code>P2</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Movement</strong></td>
+<td style="text-align: left;">Ignore vertical (Fly)</td>
+<td style="text-align: left;">Fly requires diagonal measurement</td>
+<td style="text-align: left;">RVN vector (r, θ, h) accounts for height.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Leadership</strong></td>
+<td style="text-align: left;">Roll equal/under</td>
+<td style="text-align: left;">Roll equal/over</td>
+<td style="text-align: left;">Record raw result to maintain reversibility.</td>
+</tr>
+</tbody>
+</table>
+<p>The move from 9th to 10th edition saw the removal of the "Fight Last" sub-phase. In WARScribe, the use of priority tags (P1 for Fight First, P2 for Fight Normal) allows the notation to survive this change; the rules of the current edition determine which units receive which tags, but the notation itself remains consistent. Similarly, the change in Leadership logic (Higher is now better) is handled by recording the raw dice result and the target characteristic, allowing the resolution to be parsed correctly regardless of the prevailing edition’s math.</p>
+<h3 id="detailed-analysis-of-edition-mapping-9th-10th-and-11th">Detailed Analysis of Edition Mapping: 9th, 10th, and 11th<a class="headerlink" href="#detailed-analysis-of-edition-mapping-9th-10th-and-11th" title="Permanent link">&para;</a></h3>
+<p>The transition between 9th and 10th edition Warhammer 40,000 provides a case study in how notation must adapt to evolving rulesets. One of the most significant changes occurred in the Charge and Fight phases. In 9th edition, the fight phase was divided into three distinct steps: Fight First, Fight Normal, and Fight Last. This required a complex three-tier priority system. 10th edition eliminated the "Fight Last" tier, simplifying the process into a two-tier system where units alternate starting with the player whose turn is not taking place.</p>
+<p>WARScribe handles this by using ordinal priority markers. Instead of hard-coding "Fight First," the notation uses <code>[P1]</code>, <code>[P2]</code>, and <code>[P3]</code>. In 10th edition, <code>[P3]</code> simply remains unused unless a specific mission rule or future edition re-introduces a third tier of priority. This allows the notation to remain stable while the game balance shifts.</p>
+<p>Another critical change was the introduction of Battle-shock to replace the older Morale system. In 9th edition, failing a Morale test led to the direct removal of models through Combat Attrition. In 10th edition, failure results in the Battle-shocked state, which sets Objective Control (OC) to 0 and prevents the use of Stratagems. WARScribe records this not as "a morale failure" but as a state transition on the unit ID:</p>
+<div class="highlight"><pre><span></span><code>UID1{Ld_Test} -&gt; Result:Fail -&gt; UID1
+</code></pre></div>
+<p>This records the event (the test), the outcome (the failure), and the consequent state (Battle-shocked). Because the notation records the state rather than the specific penalty, it remains accurate even if the effects of Battle-shock are modified in 11th edition.</p>
+<h2 id="technical-breakdown-tabletop-simulator-json-structure">Technical Breakdown: Tabletop Simulator JSON Structure<a class="headerlink" href="#technical-breakdown-tabletop-simulator-json-structure" title="Permanent link">&para;</a></h2>
+<p>The state capture capabilities of Tabletop Simulator (TTS) offer a blueprint for the "Expanded WARScribe" (EWS) format. TTS save files are human-readable JSON that categorize data into specific serialized classes.</p>
+<h3 id="serialized-classes-in-tts-save-files">Serialized Classes in TTS Save Files<a class="headerlink" href="#serialized-classes-in-tts-save-files" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Class</th>
+<th style="text-align: left;">Properties Captured</th>
+<th style="text-align: left;">WARScribe Integration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>SaveState</strong></td>
+<td style="text-align: left;">SaveName, GameMode, Gravity, PlayArea</td>
+<td style="text-align: left;">Mission metadata and table settings.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>PhysicsMaterialState</strong></td>
+<td style="text-align: left;">DynamicFriction, StaticFriction, Bounciness</td>
+<td style="text-align: left;">Environmental factors and terrain effects.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TransformState</strong></td>
+<td style="text-align: left;">Position, Rotation, Scale</td>
+<td style="text-align: left;">The physical grounding for Relative Vector Notation.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>SnapPointState</strong></td>
+<td style="text-align: left;">AttachedVectorLines, GUID</td>
+<td style="text-align: left;">Tracks model coherency and engagement range.</td>
+</tr>
+</tbody>
+</table>
+<p>A key feature of TTS is the <code>onObjectPickUp</code> and <code>onObjectDrop</code> event handlers. These events allow a scripting engine to record movement vectors in real-time. WARScribe can utilize these triggers to automatically generate move strings:</p>
+<div class="highlight"><pre><span></span><code>onObjectDrop(player, object) -&gt; CalcVector(start, end) -&gt; WriteCWS(&quot;MOV:UID&quot;)
+</code></pre></div>
+<p>This digital-first approach ensures that the notation is a true representation of the physical state of the board.</p>
+<h2 id="the-resolution-of-the-modification-problem-in-battletech">The Resolution of the Modification Problem in BattleTech<a class="headerlink" href="#the-resolution-of-the-modification-problem-in-battletech" title="Permanent link">&para;</a></h2>
+<p>The "Modification Problem" in wargaming often relates to how movement and shooting are adjusted by terrain and situational factors. BattleTech provides a rigorous precedent for this with the PSR (Piloting Skill Roll) and GATOR systems.</p>
+<h3 id="the-gator-algorithm-for-attack-declaration">The GATOR Algorithm for Attack Declaration<a class="headerlink" href="#the-gator-algorithm-for-attack-declaration" title="Permanent link">&para;</a></h3>
+<p>In BattleTech, the target number for an attack is built sequentially:</p>
+<ol>
+<li><strong>G (Gunnery):</strong> The base skill of the pilot.</li>
+<li><strong>A (Attacker):</strong> Modifiers based on whether the attacker walked, ran, or jumped.</li>
+<li><strong>T (Target):</strong> Modifiers based on the target's movement distance.</li>
+<li><strong>O (Other):</strong> Modifiers for heat, damage, or specific gear.</li>
+<li><strong>R (Range):</strong> Short, Medium, or Long distance penalties.</li>
+</ol>
+<p>WARScribe adopts this checklist approach for its resolution strings. Instead of just recording the final "hit," the notation includes the base BS and the stack of modifiers:</p>
+<div class="highlight"><pre><span></span><code>UID1.4 -&gt; UID2 {BS3+, MOD:+1(Heavy), MOD:-1(Cover)} -&gt; Result:4(Pass)
+</code></pre></div>
+<p>By recording the factors (Heavy weapon bonus, Cover penalty), the notation provides a complete record of the "Modification" at the moment of resolution, making it easy to spot errors or analyze strategic choices in post-game reviews.</p>
+<h2 id="advanced-coordinate-reference-systems-crs">Advanced Coordinate Reference Systems (CRS)<a class="headerlink" href="#advanced-coordinate-reference-systems-crs" title="Permanent link">&para;</a></h2>
+<p>Wargaming movement often involves complex interactions with terrain features. Relative Vector Notation is most effective when anchored in a robust CRS. Game developers differentiate between Cartesian systems based on their orientation. Unreal Engine, for example, assigns the XYZ axes to Forward, Right, and Up, while Unity uses Right, Up, and Forward.</p>
+<p>For WARScribe to be truly universal, it must define a standard orientation for its Cartesian basis:</p>
+<ul>
+<li><strong>X-axis:</strong> The horizontal width of the table (East-West).</li>
+<li><strong>Y-axis:</strong> The vertical height (Elevation).</li>
+<li><strong>Z-axis:</strong> The horizontal depth of the table (North-South).</li>
+</ul>
+<p>This right-handed coordinate system allows for the use of standard rotation matrices to resolve model pivots and aircraft movements. In 10th edition, aircraft movement became more restricted, with models no longer able to pivot before moving unless they are in Hover mode. WARScribe records these pivots as angular displacements:</p>
+<div class="highlight"><pre><span></span><code>ROT:UID1 {Pivot: 90°}
+</code></pre></div>
+<p>Combined with RVN, this provides a mathematically complete record of any model's path through 3D space.</p>
+<h2 id="conclusion-and-future-directions">Conclusion and Future Directions<a class="headerlink" href="#conclusion-and-future-directions" title="Permanent link">&para;</a></h2>
+<p>WARScribe represents a convergence of several disparate fields: the efficiency of chess notation, the logic of GDL, the relational semantics of Partake, and the physical state capture of digital tools like Tabletop Simulator. By addressing the Identity, Resolution, and Modification problems through a rigorous, symbolic grammar, WARScribe provides the first truly universal language for the tabletop wargaming community.</p>
+<p>Future development will focus on the automation of this notation through computer vision and digital overlays. As players increasingly turn to virtual tabletop environments and augmented reality aids, the demand for a machine-parsable, edition-independent record of play will only grow. WARScribe is the foundational step toward that future, providing a language that is as durable as the hobby it serves.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/vindicta-platform" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "toc.integrate", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

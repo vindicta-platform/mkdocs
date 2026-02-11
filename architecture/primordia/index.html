@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#primordia-engine-architecture" class="md-skip">
+        <a href="#project-primordia-the-warhammer-40000-evaluation-engine" class="md-skip">
           Skip to content
         </a>
       
@@ -569,6 +569,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../core-concepts/warscribe-whitepaper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WARScribe Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../core-concepts/warscribe/" class="md-nav__link">
         
   
@@ -749,10 +777,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#i-the-advantage-meter-20-0-scale" class="md-nav__link">
+  <a href="#1-core-philosophy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        I. The Advantage Meter (20-0 Scale)
+        1. Core Philosophy
       
     </span>
   </a>
@@ -760,10 +788,132 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ii-search-pruning-logic" class="md-nav__link">
+  <a href="#2-state-space-complexity" class="md-nav__link">
     <span class="md-ellipsis">
       
-        II. Search &amp; Pruning Logic
+        2. State Space &amp; Complexity
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-high-performance-state-representation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. High-Performance State Representation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. High-Performance State Representation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hierarchical-bitboards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hierarchical Bitboards
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zobrist-hashing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zobrist Hashing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-evaluation-function-20-0-scale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Evaluation Function (20-0 Scale)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Evaluation Function (20-0 Scale)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metrics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handling-stochasticity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Handling Stochasticity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-search-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Search Strategy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-output-telemetry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Output &amp; Telemetry
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-implementation-roadmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Implementation Roadmap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-hardware-specs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Hardware Specs
       
     </span>
   </a>
@@ -1498,19 +1648,81 @@
   
 
 
-<h1 id="primordia-engine-architecture">Primordia Engine Architecture<a class="headerlink" href="#primordia-engine-architecture" title="Permanent link">&para;</a></h1>
-<p><strong>Function:</strong> Deterministic Advantage Inference ("Chess Engine for 40k")</p>
-<h2 id="i-the-advantage-meter-20-0-scale">I. The Advantage Meter (20-0 Scale)<a class="headerlink" href="#i-the-advantage-meter-20-0-scale" title="Permanent link">&para;</a></h2>
-<p>Primordia evaluates the board state using the <strong>Dynamic Material Formula (DMF)</strong>:</p>
-<p>$$
-\text{DMF} = \sum (\text{Material} \times \text{Lethality}) + (\text{Victory Points} \times \text{Momentum})
-$$</p>
-<p>Advantage is inferred by projecting $\Delta \text{VP}$ delta across Turn 5, mapped to a WTC-style <strong>20-0 point differential</strong>.</p>
-<h2 id="ii-search-pruning-logic">II. Search &amp; Pruning Logic<a class="headerlink" href="#ii-search-pruning-logic" title="Permanent link">&para;</a></h2>
+<h1 id="project-primordia-the-warhammer-40000-evaluation-engine">Project Primordia: The Warhammer 40,000 Evaluation Engine<a class="headerlink" href="#project-primordia-the-warhammer-40000-evaluation-engine" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>"The future of Warhammer 40,000 is not just in the hands of the players, but in the silicon of the evaluation engine that can truly see the war for the empires it builds."</p>
+</blockquote>
+<h2 id="1-core-philosophy">1. Core Philosophy<a class="headerlink" href="#1-core-philosophy" title="Permanent link">&para;</a></h2>
+<p>To build an engine capable of rivaling Stockfish/AlphaZero by abstracting the Warhammer 40k battlefield into a finite, massive mathematical state space. The goal is moving from "feel" to "deterministic fact."</p>
+<h2 id="2-state-space-complexity">2. State Space &amp; Complexity<a class="headerlink" href="#2-state-space-complexity" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Alpha-Beta Search:</strong> Prunes branches that don't result in an Objective Flip or High-Efficiency Trade.</li>
-<li><strong>Root Parallelization:</strong> Scales search across home server CPU cores, assigning "Luck Profiles" (Optimistic/Pessimistic) to each core to handle dice variance.</li>
-<li><strong>Mate in N:</strong> Detection of <strong>Alpha-Lock</strong> (Tabling) or <strong>Delta-Lock</strong> (Points mathematically insurmountable).</li>
+<li><strong>Battlefield</strong>: 44" x 60" continuous surface.</li>
+<li><strong>Discretization</strong>: 0.1" resolution -&gt; ~264,000 cells (<span class="arithmatex">\(440 \times 600\)</span>).</li>
+<li><strong>State Complexity</strong>: <span class="arithmatex">\(&gt;10^{250}\)</span> (exceeds Go and Chess).</li>
+<li><strong>Approach</strong>: Multi-layered renormalization (High-res objectives, Low-res open space).</li>
+</ul>
+<h2 id="3-high-performance-state-representation">3. High-Performance State Representation<a class="headerlink" href="#3-high-performance-state-representation" title="Permanent link">&para;</a></h2>
+<h3 id="hierarchical-bitboards">Hierarchical Bitboards<a class="headerlink" href="#hierarchical-bitboards" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Master Bitboard</strong>: Tracks active zones.</li>
+<li><strong>Zone Bitboards</strong>: 64-bit words representing local spatial data.</li>
+<li><strong>Operations</strong>: SMID/AVX-512 optimized bitwise AND/OR/XOR for LoS, Auras, and Range checks.</li>
+<li><strong>Magic Bitboards</strong>: Precomputed movement and visibility paths.</li>
+</ul>
+<h3 id="zobrist-hashing">Zobrist Hashing<a class="headerlink" href="#zobrist-hashing" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Purpose</strong>: <span class="arithmatex">\(O(1)\)</span> state retrieval from Transposition Tables.</li>
+<li><strong>Hash Components</strong>:</li>
+<li>Unit Positions</li>
+<li>Unit Health (unique string for every wound state of every model)</li>
+<li>Resources (CP, Stratagems)</li>
+<li>Global Buffs</li>
+<li>Phase &amp; Active Player</li>
+</ul>
+<h2 id="4-evaluation-function-20-0-scale">4. Evaluation Function (20-0 Scale)<a class="headerlink" href="#4-evaluation-function-20-0-scale" title="Permanent link">&para;</a></h2>
+<h3 id="metrics">Metrics<a class="headerlink" href="#metrics" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Mathhammer (Material)</strong>:</li>
+<li><strong>OV (Offensive Value)</strong>: Expected damage vs GEQ/MEQ/TEQ.</li>
+<li><strong>DV (Defensive Value)</strong>: Effective wounds (T, Sv, Invuln, FNP).</li>
+<li><strong>Positional</strong>:</li>
+<li><strong>OC Efficiency</strong>: Holding objectives.</li>
+<li><strong>Screen Integrity</strong>: Denying enemy movement.</li>
+<li><strong>Tempo</strong>: Forcing opponent reactions.</li>
+<li><strong>Neural Evaluation (NNUE)</strong>:</li>
+<li>Learned weights from millions of simulated/tournament games.</li>
+<li>Concepts evaluated: "Who's the Beatdown?", Trap Detection.</li>
+</ul>
+<h3 id="handling-stochasticity">Handling Stochasticity<a class="headerlink" href="#handling-stochasticity" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Probability Convolution</strong>: Modeling dice results as PMFs (Probability Mass Functions), not averages.</li>
+<li><strong>Risk Adjustment</strong>: Discounting evaluation based on variance (Gaussian approx for volume fire).</li>
+<li><strong>Chance Nodes</strong>: Implementing Expectiminimax or MCTS chance nodes.</li>
+</ul>
+<h2 id="5-search-strategy">5. Search Strategy<a class="headerlink" href="#5-search-strategy" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Quiescence Search</strong>: Resolving "Noisy" positions (Engagement Range, Overwatch, Battleshock) before static eval.</li>
+<li><strong>Endgame Tablebases</strong>:</li>
+<li>Detect "Point Lock" (Mate).</li>
+<li>Condition: <span class="arithmatex">\(VP_{lead} &gt; VP_{max\_possible\_enemy}\)</span>.</li>
+</ul>
+<h2 id="6-output-telemetry">6. Output &amp; Telemetry<a class="headerlink" href="#6-output-telemetry" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Protocol</strong>: UCI (Universal Chess Interface).</li>
+<li><strong>UI</strong>: Real-time Advantage Meter (Centipawns -&gt; 20-0 WTC Scale).</li>
+<li><strong>Broadcast</strong>: AR compatibility via Event Stream (Kafka).</li>
+</ul>
+<h2 id="7-implementation-roadmap">7. Implementation Roadmap<a class="headerlink" href="#7-implementation-roadmap" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Phase 1: Combat Patrol</strong>: Smaller state space, fixed lists.</li>
+<li><strong>Phase 2: Strike Force</strong>: Full 2000pt scaling, Hybrid MCTS/Alpha-Beta.</li>
+<li><strong>Phase 3: Strategic Engineering</strong>: Rule/Point simulation for balance testing.</li>
+</ol>
+<h2 id="8-hardware-specs">8. Hardware Specs<a class="headerlink" href="#8-hardware-specs" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>CPU</strong>: SIMD / AVX-512 support.</li>
+<li><strong>GPU</strong>: NVIDIA Blackwell / RTX for NNUE.</li>
+<li><strong>RAM</strong>: Fast MRAM for Transposition Tables.</li>
 </ul>
 
 
@@ -1589,6 +1801,12 @@ $$</p>
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

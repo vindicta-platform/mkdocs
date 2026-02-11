@@ -563,6 +563,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../core-concepts/warscribe-whitepaper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WARScribe Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../core-concepts/warscribe/" class="md-nav__link">
         
   
@@ -1442,10 +1470,12 @@
                      │  Middleware│
                      └───────────┘
 </code></pre></div>
-<p><strong>Integration Points</strong>:
-- <code>Vindicta-API</code>: New <code>/auth/*</code> route group; JWT validation middleware on all protected endpoints.
-- <code>Vindicta-Core</code>: User entity added to the domain model; session management service.
-- <code>Vindicta-Portal</code>: Login/Register UI components; token storage via <code>httpOnly</code> cookies.</p>
+<p><strong>Integration Points</strong>:</p>
+<ul>
+<li><code>Vindicta-API</code>: New <code>/auth/*</code> route group; JWT validation middleware on all protected endpoints.</li>
+<li><code>Vindicta-Core</code>: User entity added to the domain model; session management service.</li>
+<li><code>Vindicta-Portal</code>: Login/Register UI components; token storage via <code>httpOnly</code> cookies.</li>
+</ul>
 <h3 id="3-data-model">3. Data Model<a class="headerlink" href="#3-data-model" title="Permanent link">&para;</a></h3>
 <h4 id="new-entities">New Entities<a class="headerlink" href="#new-entities" title="Permanent link">&para;</a></h4>
 <table>
@@ -1721,6 +1751,12 @@
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

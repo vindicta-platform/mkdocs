@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#army-management" class="md-skip">
+        <a href="#warscribe-system" class="md-skip">
           Skip to content
         </a>
       
@@ -569,6 +569,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../core-concepts/warscribe-whitepaper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WARScribe Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../core-concepts/warscribe/" class="md-nav__link">
         
   
@@ -989,10 +1017,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-warscribe-does" class="md-nav__link">
+  <a href="#core-capabilities" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What WARScribe Does
+        Core Capabilities
       
     </span>
   </a>
@@ -1000,10 +1028,49 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#unit-registration" class="md-nav__link">
+  <a href="#the-notation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Unit Registration
+        The Notation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Notation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unit-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unit Definition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#action-record" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Action Record
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tools-and-ecosystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tools and Ecosystem
       
     </span>
   </a>
@@ -1011,43 +1078,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#action-notation" class="md-nav__link">
+  <a href="#integration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Action Notation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#transcript-generation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Transcript Generation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#known-gaps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Known Gaps
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#related-tools" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Related Tools
+        Integration
       
     </span>
   </a>
@@ -1553,82 +1587,68 @@
   
 
 
-<h1 id="army-management">Army Management<a class="headerlink" href="#army-management" title="Permanent link">&para;</a></h1>
-<p>Map units to IDs and record game actions with WARScribe notation.</p>
+<h1 id="warscribe-system">WARScribe System<a class="headerlink" href="#warscribe-system" title="Permanent link">&para;</a></h1>
+<p>The Universal Wargaming Notation System.</p>
 <hr />
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>Vindicta's army management uses the <strong>WARScribe</strong> notation format — a human-readable, machine-parseable standard for representing Warhammer 40k <strong>game actions and unit references</strong>.</p>
-<div class="admonition warning">
-<p class="admonition-title">Scope Clarification</p>
-<p>WARScribe is <strong>not</strong> a list validation tool. It maps unit makeup to IDs and records gameplay actions. List legality validation is <strong>out of scope</strong> — this is an accepted risk for future projects that may rely on this data.</p>
-</div>
-<h2 id="what-warscribe-does">What WARScribe Does<a class="headerlink" href="#what-warscribe-does" title="Permanent link">&para;</a></h2>
+<p><strong>WARScribe</strong> is a formal, language-agnostic, and edition-independent notation system for recording wargaming states and actions. It serves as the "source of truth" for the Vindicta Platform, enabling:</p>
+<ul>
+<li><strong>Universal Transcripts</strong>: A standard format for sharing battle reports.</li>
+<li><strong>Machine Readability</strong>: Parsable by engines for simulation and analysis.</li>
+<li><strong>Cross-System Support</strong>: Designed to handle various game systems (40k 10th, etc.) through adapters.</li>
+</ul>
+<h2 id="core-capabilities">Core Capabilities<a class="headerlink" href="#core-capabilities" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>In Scope</th>
-<th>Out of Scope</th>
+<th style="text-align: left;">Feature</th>
+<th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Unit ID mapping</td>
-<td>Point limit validation</td>
+<td style="text-align: left;"><strong>Unit Identity</strong></td>
+<td style="text-align: left;">Maps arbitrary unit strings (e.g., "Space Marine Captain") to unique, persistent IDs (<code>CPT-01</code>).</td>
 </tr>
 <tr>
-<td>Action notation</td>
-<td>Detachment legality</td>
+<td style="text-align: left;"><strong>Coordinate System</strong></td>
+<td style="text-align: left;">Uses a standardized coordinate reference system (CRS) for board positioning.</td>
 </tr>
 <tr>
-<td>Game event recording</td>
-<td>Loadout rule enforcement</td>
+<td style="text-align: left;"><strong>Action Logging</strong></td>
+<td style="text-align: left;">Records moves, attacks, and state changes with formal syntax.</td>
 </tr>
 <tr>
-<td>Transcript generation</td>
-<td>Faction restrictions</td>
+<td style="text-align: left;"><strong>Modification Logic</strong></td>
+<td style="text-align: left;">Tracks buffs, debuffs, and lasting effects on units.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="unit-registration">Unit Registration<a class="headerlink" href="#unit-registration" title="Permanent link">&para;</a></h2>
-<p>Register your units for a match:</p>
-<div class="highlight"><pre><span></span><code>vindicta<span class="w"> </span>warscribe<span class="w"> </span>register<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--unit<span class="w"> </span><span class="s2">&quot;Captain&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--id<span class="w"> </span><span class="s2">&quot;CPT-01&quot;</span><span class="w"> </span><span class="c1"># May be autogenerated if not provided</span>
+<h2 id="the-notation">The Notation<a class="headerlink" href="#the-notation" title="Permanent link">&para;</a></h2>
+<p>WARScribe uses a structured format to capture game events.</p>
+<h3 id="unit-definition">Unit Definition<a class="headerlink" href="#unit-definition" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>DEFINE UNIT: &quot;Captain in Terminator Armour&quot; AS [U-001]
+PROPERTIES: { Faction: &quot;Adeptus Astartes&quot;, Points: 95 }
 </code></pre></div>
-<p>Units are tracked by their assigned IDs throughout the game.</p>
-<h2 id="action-notation">Action Notation<a class="headerlink" href="#action-notation" title="Permanent link">&para;</a></h2>
-<p>Record game actions in WARScribe format:</p>
-<div class="highlight"><pre><span></span><code>[MOVE: CPT-01 -&gt; Objective-1]
-[SHOOT: TNK-02 -&gt; CPT-01]
-[CHARGE: TAC-03 -&gt; OBJ-1]
-[FIGHT: CPT-01 -&gt; Objective-5]
+<h3 id="action-record">Action Record<a class="headerlink" href="#action-record" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>[TURN 1: PLAYER A]
+MOVE [U-001] FROM (12, 4) TO (12, 10)
+ATTACK [U-001] -&gt; [E-005] USING &quot;Storm Bolter&quot;
+  &gt; HITS: 3
+  &gt; WOUNDS: 2
+  &gt; SAVES: 1
+  &gt; DAMAGE: 1
 </code></pre></div>
-<h2 id="transcript-generation">Transcript Generation<a class="headerlink" href="#transcript-generation" title="Permanent link">&para;</a></h2>
-<p>After a game, generate a complete transcript:</p>
-<div class="highlight"><pre><span></span><code>vindicta<span class="w"> </span>warscribe<span class="w"> </span>transcript<span class="w"> </span>&lt;match-id&gt;
-</code></pre></div>
-<p>Output:</p>
-<div class="highlight"><pre><span></span><code>=== Turn 1 ===
-[MOVE: CPT-01 -&gt; Zone-A]
-[SHOOT: TNK-02 -&gt; CPT-01, Result: 3 wounds]
-
-=== Turn 2 ===
-[CHARGE: TAC-03 -&gt; OBJ-1, Success]
-...
-</code></pre></div>
-<hr />
-<h2 id="known-gaps">Known Gaps<a class="headerlink" href="#known-gaps" title="Permanent link">&para;</a></h2>
-<div class="admonition info">
-<p class="admonition-title">Accepted Risk</p>
-<p>Lists may declare units that are mechanically illegal according to game rules. Future projects needing list validation will require a separate validation layer. This is documented as an <strong>open risk</strong>.</p>
-</div>
-<hr />
-<h2 id="related-tools">Related Tools<a class="headerlink" href="#related-tools" title="Permanent link">&para;</a></h2>
+<h2 id="tools-and-ecosystem">Tools and Ecosystem<a class="headerlink" href="#tools-and-ecosystem" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://github.com/vindicta-platform/WARScribe-Parser">WARScribe-Parser</a> — Parse transcripts</li>
-<li><a href="https://github.com/vindicta-platform/WARScribe-CLI">WARScribe-CLI</a> — Command-line tools</li>
-<li><a href="https://github.com/vindicta-platform/Battle-Transcript-Toolkit">Battle-Transcript-Toolkit</a> — Analysis tools</li>
+<li><strong>WARScribe-CLI</strong>: Command line tool for validating notation and generating reports.</li>
+<li><code>warscribe parse &lt;file.ws&gt;</code></li>
+<li><code>warscribe export --format json</code></li>
+<li><strong>WARScribe-Parser</strong>: The core library for programmatic access to WARScribe data.</li>
+<li><strong>Vindicta Portal</strong>: Visualizes WARScribe transcripts as interactive battle reports.</li>
 </ul>
+<h2 id="integration">Integration<a class="headerlink" href="#integration" title="Permanent link">&para;</a></h2>
+<p>WARScribe feeds directly into <strong>Project Primordia</strong> to drive post-game analysis and "What-If" simulations.</p>
 
 
 
@@ -1706,6 +1726,12 @@
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

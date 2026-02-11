@@ -563,6 +563,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../core-concepts/warscribe-whitepaper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WARScribe Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../core-concepts/warscribe/" class="md-nav__link">
         
   
@@ -1577,12 +1605,13 @@ All diagrams are generated from the canonical <a href="../../c4/workspace.dsl">w
 
     System_Boundary(pres, &quot;Presentation&quot;) {
         Container(portal, &quot;Vindicta-Portal&quot;, &quot;HTML/JS&quot;, &quot;Web portal — static hosted on GCP&quot;)
-        Container(ui, &quot;Logi-Slate-UI&quot;, &quot;React, TypeScript, Tailwind&quot;, &quot;Design system component library&quot;)
+        Container(ui, &quot;Vindicta-Portal&quot;, &quot;React, TypeScript, Tailwind&quot;, &quot;Unified Web Interface&quot;)
         Container(cli, &quot;Vindicta-CLI&quot;, &quot;Python, Click&quot;, &quot;Unified CLI for devs and power users&quot;)
         Container(api, &quot;Vindicta-API&quot;, &quot;Python, FastAPI&quot;, &quot;REST API gateway to all services&quot;)
     }
 
-    Container_Ext(core, &quot;Vindicta-Core&quot;, &quot;Shared primitives&quot;)
+    Container_Ext(foundation, &quot;Vindicta-Foundation&quot;, &quot;Base models and axioms&quot;)
+    Container_Ext(primordia, &quot;Project Primordia&quot;, &quot;Evaluation Engine&quot;)
 
     Rel(player, portal, &quot;Browses&quot;, &quot;HTTPS&quot;)
     Rel(player, cli, &quot;Power-user access&quot;, &quot;Terminal&quot;)
@@ -1777,6 +1806,12 @@ All diagrams are generated from the canonical <a href="../../c4/workspace.dsl">w
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

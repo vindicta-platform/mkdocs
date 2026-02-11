@@ -563,6 +563,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../core-concepts/warscribe-whitepaper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WARScribe Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../core-concepts/warscribe/" class="md-nav__link">
         
   
@@ -1442,10 +1470,12 @@
                                     │ Player (UI)  │
                                     └───────────────┘
 </code></pre></div>
-<p><strong>Components</strong>:
-- <strong>Replay Recorder</strong>: Middleware in Dice-Engine that intercepts all events and serializes them to a replay file.
-- <strong>Replay Storage</strong>: GCS bucket with compressed JSON replay files (gzipped, ~50KB per 2000pt game).
-- <strong>Replay Player</strong>: Portal component with play/pause/scrub controls and animated unit state rendering.</p>
+<p><strong>Components</strong>:</p>
+<ul>
+<li><strong>Replay Recorder</strong>: Middleware in Dice-Engine that intercepts all events and serializes them to a replay file.</li>
+<li><strong>Replay Storage</strong>: GCS bucket with compressed JSON replay files (gzipped, ~50KB per 2000pt game).</li>
+<li><strong>Replay Player</strong>: Portal component with play/pause/scrub controls and animated unit state rendering.</li>
+</ul>
 <h3 id="3-data-model">3. Data Model<a class="headerlink" href="#3-data-model" title="Permanent link">&para;</a></h3>
 <h4 id="replay-file-schema">Replay File Schema<a class="headerlink" href="#replay-file-schema" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
@@ -1648,6 +1678,12 @@
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>
